@@ -13,7 +13,7 @@ namespace EasyTime
         {
             InitializeComponent();
 
-            MainPage = new EasyTime.MainPage();
+            MainPage = new NavigationPage(new FrontPage());
         }
 
         protected override void OnStart()
