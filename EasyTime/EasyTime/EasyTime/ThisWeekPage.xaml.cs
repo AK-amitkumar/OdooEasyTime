@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace EasyTime
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ThisWeekPage : ContentPage
     {
-        public MainPage()
+        public ThisWeekPage()
         {
             InitializeComponent();
-            listview.ItemsSource = "";
-            listview4.ItemsSource = "";
-            listview5.ItemsSource = "";
         }
     }
 }
