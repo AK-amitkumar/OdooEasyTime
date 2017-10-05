@@ -22,7 +22,9 @@
                             <StackLayout>
                                 <Label Text="{Binding TimeElapsed}"/>
                             </StackLayout>
-                            <Button Text="test" Clicked="Button_Clicked"></Button>
+                            <Stepper x:Name="stepper" Increment="5" Minimum="0" Maximum="1000"></Stepper>
+                            <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"></Label>
+                           <!-- <Button Text="test" Clicked="Button_Clicked"></Button> -->
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
