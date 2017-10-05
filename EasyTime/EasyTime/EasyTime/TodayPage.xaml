@@ -1,14 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EasyTime.TodayPage">
-
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTime.TodayPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated"></ToolbarItem>
+        <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated">
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <StackLayout>
-
-
         <ListView x:Name="listView" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -16,41 +12,26 @@
                         <StackLayout Orientation="Horizontal" Padding="5">
                             <!--<Image Source="{Binding Imageurl}"></Image>-->
                             <StackLayout HorizontalOptions="StartAndExpand">
-                                <Label Text="{Binding TaskName}" FontSize="Large"></Label>
-                                <Label Text="{Binding ProjectName}" TextColor="Gray"></Label>
+                                <Label Text="{Binding TaskName}" FontSize="Large">
+                                </Label>
+                                <Label Text="{Binding ProjectName}" TextColor="Gray">
+                                </Label>
                             </StackLayout>
                             <StackLayout>
-                                <Label Text="{Binding TimeElapsed}"/>
+                                <Label Text="{Binding TimeElapsed}" />
                             </StackLayout>
-                            <Button Text="test" Clicked="Button_Clicked"></Button>
+                            <Button Text="test" Clicked="Button_Clicked">
+                            </Button>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
         <StackLayout VerticalOptions="End">
-
             <AbsoluteLayout BackgroundColor="Gray" Padding="0,15,0,2">
-                <Button x:Name="TimerBtn" 
-                    BackgroundColor="Green" 
-                    TextColor="White" 
-                    Text="Start" 
-                    BorderWidth="1" 
-                    Font="18"
-                    AbsoluteLayout.LayoutBounds="0.2,0,0.2,0.8" 
-                    AbsoluteLayout.LayoutFlags="All" 
-                    Clicked="TimerBtn_Clicked"/>
-                <Label x:Name="TimerLbl" 
-                   Text="00:00:00" 
-                   FontSize="30"
-                   TextColor="White"
-                   AbsoluteLayout.LayoutBounds="0.8,0,0.4,0.9" 
-                   AbsoluteLayout.LayoutFlags="All"/>
+                <Button x:Name="TimerBtn" BackgroundColor="Green" TextColor="White" Text="Start" BorderWidth="1" Font="18" AbsoluteLayout.LayoutBounds="0.2,0,0.2,0.8" AbsoluteLayout.LayoutFlags="All" Clicked="TimerBtn_Clicked" />
+                <Label x:Name="TimerLbl" Text="00:00:00" FontSize="30" TextColor="White" AbsoluteLayout.LayoutBounds="0.8,0,0.4,0.9" AbsoluteLayout.LayoutFlags="All" />
             </AbsoluteLayout>
         </StackLayout>
-
-
     </StackLayout>
-
 </ContentPage>

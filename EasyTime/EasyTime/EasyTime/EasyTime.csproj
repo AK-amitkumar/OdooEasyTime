@@ -66,6 +66,7 @@
     <Compile Include="TodayPage.xaml.cs">
       <DependentUpon>TodayPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\TaskTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
