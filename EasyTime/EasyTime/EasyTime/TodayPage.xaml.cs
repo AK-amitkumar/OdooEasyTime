@@ -1,24 +1,23 @@
 ﻿using EasyTime.Modal;
 using EasyTime.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Diagnostics;
 
 namespace EasyTime
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodayPage : ContentPage
     {
+        Stopwatch sw;
+
         public TodayPage()
         {
             InitializeComponent();
             listView.ItemsSource = _People;
+			sw = new Stopwatch();
         }
 
         public ObservableCollection<Activity> _People = new ObservableCollection<Activity>
@@ -39,9 +38,47 @@ namespace EasyTime
             DisplayAlert("Test", "Dette er test", "OK", "Cancel");
         }
 
-        private void TimerBtn_Clicked(object sender, EventArgs e)
-        {
-            //
-        }
+		void CreateListItem(String elapsed)
+		{
+			//Navigation.PushModalAsync(new ExistingTaskModal(_People, elapsed));
+
+			//_People.Add(new Activity { Name = elapsed, Status = "Hej" });
+		}
+
+
+
+		ObservableCollection<Activity> GetTasks()
+		{
+			ObservableCollection<Activity> Tasks = new ObservableCollection<Activity>();
+			return Tasks;
+		}
+
+		// Timer toggle event
+
+		void TimerBtn_Clicked(object sender, EventArgs e)
+		{
+			if (TimerBtn.Text == "Start")
+			{
+				sw.Start();
+				TimerBtn.Text = "Stop";
+				TimerBtn.BackgroundColor = Color.Red;
+				Device.StartTimer(new TimeSpan(0, 0, 1), UpdateLabel);
+			}
+			else
+			{
+				sw.Stop();
+				TimerBtn.Text = "Start";
+				TimerBtn.BackgroundColor = Color.Green;
+				var elapsed = sw.Elapsed.ToString(@"hh\:mm\:ss");
+				CreateListItem(elapsed);
+				sw.Reset();
+			}
+		}
+
+		bool UpdateLabel()
+		{
+			TimerLbl.Text = sw.Elapsed.ToString(@"hh\:mm\:ss");
+			return true;
+		}
     }
 }
