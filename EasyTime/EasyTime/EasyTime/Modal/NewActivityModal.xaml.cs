@@ -21,12 +21,12 @@ namespace EasyTime.Modal
             Tasks = _People;
         }
 
-        async void Button_Clicked(object sender, EventArgs e)
-        {
-            Activity c = new Activity { TaskName = nameEntry.Text, ProjectName = statusEntry.Text };
-            Tasks.Add(c);
-            await Navigation.PopModalAsync();
-        }
+        //async void Button_Clicked(object sender, EventArgs e)
+        //{
+        //    Activity c = new Activity { TaskName = nameEntry.Text, ProjectName = statusEntry.Text };
+        //    Tasks.Add(c);
+        //    await Navigation.PopModalAsync();
+        //}
 
     }
 }
