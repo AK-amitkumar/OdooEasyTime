@@ -22,7 +22,7 @@ namespace EasyTime
 
         public ObservableCollection<Activity> _People = new ObservableCollection<Activity>
         {
-            new Activity {TaskName ="Tester1", ProjectName="Tester", TimeElapsed="11111"},
+            new Activity {TaskName ="Tester1", ProjectName="Tester"},
             new Activity {TaskName ="Tester2", ProjectName="Tester"},
             new Activity {TaskName ="Tester3", ProjectName="Tester"},
         };
