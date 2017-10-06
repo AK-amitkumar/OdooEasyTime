@@ -1,4 +1,5 @@
 ﻿using EasyTime.Model;
+using EasyTime.test;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,6 +31,7 @@ namespace EasyTime
                 new menuItems{Name="Kørsel", Imageurl="http://lorempixel.com/100/100/business/3"},
                 new menuItems{Name="Statistik", Imageurl="http://lorempixel.com/100/100/business/4"},
                 new menuItems{Name="Synkronisering", Imageurl="http://lorempixel.com/100/100/business/5"},
+                new menuItems{Name="TestSide", Imageurl="http://lorempixel.com/100/100/business/6"},
             };
             MainMenuList.ItemsSource = _Menus;
         }
@@ -57,6 +59,10 @@ namespace EasyTime
             if (menu.Name == "Synkronisering")
             {
                 await Navigation.PushAsync(new SynchronizePage());
+            }
+            if (menu.Name == "TestSide")
+            {
+                await Navigation.PushAsync(new Restful());
             }
             MainMenuList.SelectedItem = null;
         }

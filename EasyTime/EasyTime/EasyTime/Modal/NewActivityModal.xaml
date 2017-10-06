@@ -5,7 +5,7 @@
     
     <TableView Intent="Form">
         <TableRoot>
-            <TableSection Title="1. September (uge 35)">
+            <TableSection x:Name="table">
                 <TextCell Text="Projekt" Detail="Task"></TextCell>
                 <EntryCell Label="Title" Placeholder="Placeholder her..."></EntryCell>
                 <ViewCell>

@@ -17,6 +17,7 @@ namespace EasyTime.Modal
         ObservableCollection<ActivityDriving> _activityDriveList;
 		public NewActivityDriveModal (ObservableCollection<ActivityDriving> _activityDrive)
 		{
+
 			InitializeComponent ();
             _activityDriveList = _activityDrive;
 		}
