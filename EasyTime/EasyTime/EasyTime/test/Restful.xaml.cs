@@ -16,7 +16,6 @@ namespace EasyTime.test
     {
         public string project_name { get; set; }
         public int ProjectId { get; set; }
-        public string Title { get; set; }
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
