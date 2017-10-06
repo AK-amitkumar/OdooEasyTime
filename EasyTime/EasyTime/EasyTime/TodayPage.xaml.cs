@@ -80,5 +80,11 @@ namespace EasyTime
 			TimerLbl.Text = sw.Elapsed.ToString(@"hh\:mm\:ss");
 			return true;
 		}
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var test = (Label)sender;
+            test.Text = "det virker!";
+        }
     }
 }

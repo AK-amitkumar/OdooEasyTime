@@ -6,9 +6,9 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated"></ToolbarItem>
     </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
     <StackLayout>
-
-
         <ListView x:Name="listView" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -19,17 +19,33 @@
                                 <Label Text="{Binding TaskName}" FontSize="Large"></Label>
                                 <Label Text="{Binding ProjectName}" TextColor="Gray"></Label>
                             </StackLayout>
-                            <StackLayout>
+                            <!-- <StackLayout>
                                 <Label Text="{Binding TimeElapsed}"/>
-                            </StackLayout>
-                            <Stepper x:Name="stepper" Increment="5" Minimum="0" Maximum="1000"></Stepper>
-                            <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"></Label>
-                           <!-- <Button Text="test" Clicked="Button_Clicked"></Button> -->
+                            </StackLayout> -->
+                            <Button Text="-" FontSize="Large" x:Name="minusButton"></Button>
+                            <Label Text="01:15" x:Name="timeLabel">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+                            </Label>
+                            <Button Text="+" FontSize="Large" x:Name="plusButton"></Button>
+                            <!-- <Button Text="test" Clicked="Button_Clicked"></Button> -->
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
+        <!--
+        <StackLayout>
+            <Label Text="tryk">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="hej" x:Name="test"></Label>
+        </StackLayout>
+        -->  
 
         <StackLayout VerticalOptions="End">
 
@@ -54,5 +70,5 @@
 
 
     </StackLayout>
-
+    </ContentPage.Content>
 </ContentPage>
