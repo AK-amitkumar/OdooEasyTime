@@ -42,5 +42,34 @@ namespace EasyTime.test
 
             base.OnAppearing();
         }
+
+        async void OnAdd(object sender, EventArgs e)
+        {
+            var i = 1000;
+            var project = new Project { project_name = "Title " + DateTime.Now.Ticks, ProjectId = i++};
+
+            var content = JsonConvert.SerializeObject(project);
+            await _client.PostAsync(Url, new StringContent(content));
+
+            _projects.Add(project);
+        }
+
+        async void OnUpdate(object sender, EventArgs e)
+        {
+            var project = _projects[0];
+            project.project_name += " UPDATED";
+
+            var content = JsonConvert.SerializeObject(project);
+            await _client.PutAsync(Url + "/" + project.ProjectId, new StringContent(content));
+        }
+
+        async void OnDelete(object sender, EventArgs e)
+        {
+            var project = _projects[0];
+
+            await _client.DeleteAsync(Url + "/" + project.ProjectId);
+
+            _projects.Remove(project);
+        }
     }
 }

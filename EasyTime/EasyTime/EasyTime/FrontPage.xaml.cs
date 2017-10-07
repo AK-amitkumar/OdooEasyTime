@@ -62,7 +62,7 @@ namespace EasyTime
             }
             if (menu.Name == "TestSide")
             {
-                await Navigation.PushAsync(new newlist());
+                await Navigation.PushAsync(new Restful());
             }
             MainMenuList.SelectedItem = null;
         }
