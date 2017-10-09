@@ -137,12 +137,13 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasyTime\EasyTime.csproj">
-      <Project>{84bac2f8-7fd4-4bd5-bfcb-a9befcb0a5d4}</Project>
+      <Project>{91F41F51-C745-4420-A018-A9F4DE1C011B}</Project>
       <Name>EasyTime</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\plus.png" />
+    <AndroidResource Include="Resources\plus%403x.png" />
+    <AndroidResource Include="Resources\plus%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
