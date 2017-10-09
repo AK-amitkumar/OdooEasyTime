@@ -1,4 +1,4 @@
-﻿
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
@@ -27,7 +27,7 @@ namespace EasyTime.test
 		protected override async void OnAppearing()
 		{
 			var content = await client.GetStringAsync(url);
-			var users = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(content);
+			var users = JsonConvert.DeserializeObject<User>(content);
 
 			source = new ObservableCollection<User>();
             source.Add(users);
