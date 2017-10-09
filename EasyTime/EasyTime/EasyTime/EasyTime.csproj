@@ -73,10 +73,16 @@
       <DependentUpon>TodayPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\TaskTimer.cs" />
+    <Compile Include="test\Rest2.xaml.cs">
+      <DependentUpon>Rest2.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test\Rest2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

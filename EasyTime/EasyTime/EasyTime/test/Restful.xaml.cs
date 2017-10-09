@@ -21,7 +21,7 @@ namespace EasyTime.test
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Restful : ContentPage
     {
-        const string Url = "http://127.0.0.1:3000/";
+        const string Url = "http://localhost:3000/users/get/1";
         HttpClient _client = new HttpClient();
         ObservableCollection<Project> _projects;
 
@@ -32,9 +32,9 @@ namespace EasyTime.test
         protected override async void OnAppearing()
         {
             var content = await _client.GetStringAsync(Url);
-            //int firstDataIx = content.IndexOf('[');
-            //int lastDataIx = content.IndexOf(']');
-            //string content2 = content.Substring(firstDataIx, (lastDataIx - firstDataIx + 1));
+            int firstDataIx = content.IndexOf('[');
+            int lastDataIx = content.IndexOf(']');
+            string content2 = content.Substring(firstDataIx, (lastDataIx - firstDataIx + 1));
 
             var projects = JsonConvert.DeserializeObject<List<Project>>(content);
 
