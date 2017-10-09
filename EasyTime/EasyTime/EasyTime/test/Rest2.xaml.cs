@@ -14,7 +14,7 @@ namespace EasyTime.test
 
     public partial class Rest2 : ContentPage
     {
-        const string url = "http://127.0.0.1:3000/users/get/1";
+        const string url = "http://localhost:3000/users/get/1";
         HttpClient client = new HttpClient();
         ObservableCollection<User> source;
 
