@@ -5,31 +5,39 @@ using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace EasyTime
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodayPage : ContentPage
     {
+        ObservableCollection<Activity> _Activity;
         Stopwatch sw;
+        const string Url = "192.168.42.1:3000/tasks/";
+        HttpClient _client = new HttpClient();
 
         public TodayPage()
         {
             InitializeComponent();
-            listView.ItemsSource = _People;
 			sw = new Stopwatch();
         }
 
-        public ObservableCollection<Activity> _People = new ObservableCollection<Activity>
+        protected override async void OnAppearing()
         {
-            new Activity {TaskName ="Tester1", ProjectName="Tester"},
-            new Activity {TaskName ="Tester2", ProjectName="Tester"},
-            new Activity {TaskName ="Tester3", ProjectName="Tester"},
-        };
+            var content = await _client.GetStringAsync(Url);
+            var activities = JsonConvert.DeserializeObject<List<Activity>>(content);
+            _Activity = new ObservableCollection<Activity>(activities);
+            listView.ItemsSource = _Activity;
+
+            base.OnAppearing();
+        }
 
         async void ToolbarItem_Activated(object sender, EventArgs e)
         {
-            var page = new NewActivityModal(_People);
+            var page = new NewActivityModal(_Activity);
             await Navigation.PushModalAsync(page);
         }
 

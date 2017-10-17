@@ -8,10 +8,13 @@ namespace EasyTime.Model
 {
     public class Activity
     {
-        public string TaskName { get; set; }
+        public string Title { get; set; }
         public int TaskID { get; set; }
-        public string ProjectName { get; set; }
+        public string Description { get; set; }
         public int ProjectID { get; set; }
-        public string TimeElapsed { get; set; }
+        public string UserID { get; set; }
+        public DateTime Startdate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string timeElapsed { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace EasyTime.test
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Restful : ContentPage
     {
-        const string Url = "http://localhost:3000/users/get/1";
+        const string Url = "192.168.42.1:3000/users/get/1";
         HttpClient _client = new HttpClient();
         ObservableCollection<Project> _projects;
 
