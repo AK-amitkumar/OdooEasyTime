@@ -16,7 +16,7 @@ namespace EasyTime
     {
         ObservableCollection<Activity> _Activity;
         Stopwatch sw;
-        const string Url = "192.168.42.1:3000/tasks/";
+        const string Url = "http://localhost:3000/tasks/";
         HttpClient _client = new HttpClient();
 
         public TodayPage()
