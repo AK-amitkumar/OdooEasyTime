@@ -19,6 +19,7 @@ namespace EasyTime
         {
             InitializeComponent();
             listview.ItemsSource = _activeDrive;
+            lblDate.Text = DateTime.Now.ToString();
         }
 
         public ObservableCollection<ActivityDriving> _activeDrive = new ObservableCollection<ActivityDriving>
