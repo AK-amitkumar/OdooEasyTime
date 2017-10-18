@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Kørsel" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyTime.DrivingPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <Label x:Name="lblDate" />
+    <ListView x:Name="listview" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <!--<Image Source="{Binding Imageurl}"></Image>-->
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label Text="{Binding Title}" />
+                            <Label Text="{Binding Description}" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="{Binding Distance}" />
+                            <Label Text="{Binding sDate}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+</ContentPage>

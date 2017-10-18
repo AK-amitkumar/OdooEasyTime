@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Idag" 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyTime.TodayPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="plus.png" Activated="AddNewTask_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout>
+        <ListView x:Name="listView" HasUnevenRows="True">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding Title}" FontSize="Large"></Label>
+                                <Label Text="{Binding Description}" TextColor="Gray"></Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label x:Name="ElapsedTime" Text="{Binding timeElapsed}"/>
+                            </StackLayout>
+                            <Stepper x:Name="stepper" Increment="5" Value="{Binding Source={x:Reference ElapsedTime}}"></Stepper>
+                            <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+
+        <StackLayout VerticalOptions="End">
+
+            <AbsoluteLayout BackgroundColor="Gray" Padding="0,15,0,2">
+                <Button x:Name="TimerBtn" 
+                    BackgroundColor="Green" 
+                    TextColor="White" 
+                    Text="Start" 
+                    BorderWidth="1" 
+                    Font="18"
+                    AbsoluteLayout.LayoutBounds="0.2,0,0.2,0.8" 
+                    AbsoluteLayout.LayoutFlags="All" 
+                    Clicked="TimerBtn_Clicked"/>
+                <Label x:Name="TimerLbl" 
+                   Text="00:00:00" 
+                   FontSize="30"
+                   TextColor="White"
+                   AbsoluteLayout.LayoutBounds="0.8,0,0.4,0.9" 
+                   AbsoluteLayout.LayoutFlags="All"/>
+            </AbsoluteLayout>
+        </StackLayout>
+
+
+    </StackLayout>
+
+</ContentPage>
