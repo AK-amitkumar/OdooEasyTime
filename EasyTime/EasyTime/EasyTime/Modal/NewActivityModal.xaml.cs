@@ -1,10 +1,6 @@
 ﻿using EasyTime.Model;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,12 +9,16 @@ namespace EasyTime.Modal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewActivityModal : ContentPage
     {
-        ObservableCollection<Activity> Tasks;
+        ObservableCollection<Activity> currentTasks;
+        List<Activity> activities;
+        string elapsedTime;
 
-        public NewActivityModal(ObservableCollection<Activity> _People)
+        public NewActivityModal(ObservableCollection<Activity> currentTasks, List<Activity> activities, string elapsedTime)
         {
             InitializeComponent();
-            Tasks = _People;
+            this.currentTasks = currentTasks;
+            this.activities = activities;
+            this.elapsedTime = elapsedTime;
         }
 
         //async void Button_Clicked(object sender, EventArgs e)
@@ -28,5 +28,15 @@ namespace EasyTime.Modal
         //    await Navigation.PopModalAsync();
         //}
 
+        void SaveBtn_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
+        void CancelBtn_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
     }
+
 }

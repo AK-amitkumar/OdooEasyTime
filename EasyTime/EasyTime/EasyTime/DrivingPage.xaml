@@ -6,7 +6,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated"></ToolbarItem>
     </ContentPage.ToolbarItems>
-    
+    <Label x:Name="lblDate" />
     <ListView x:Name="listview" HasUnevenRows="True">
         <ListView.ItemTemplate>
             <DataTemplate>

@@ -14,51 +14,51 @@ namespace EasyTime
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodayPage : ContentPage
     {
-        ObservableCollection<Activity> _Activity;
         Stopwatch sw;
         const string Url = "http://localhost:3000/tasks/";
         HttpClient _client = new HttpClient();
+        ObservableCollection<Activity> _Activity;
+        List<Activity> activities;
 
         public TodayPage()
         {
             InitializeComponent();
 			sw = new Stopwatch();
+            _Activity =  new ObservableCollection<Activity>();
+            listView.ItemsSource = _Activity;
+            activities = new List<Activity>();
         }
 
+        // Populating listview with Activities from REST API, where the current date is within the date span.
         protected override async void OnAppearing()
         {
             var content = await _client.GetStringAsync(Url);
-            var activities = JsonConvert.DeserializeObject<List<Activity>>(content);
-            _Activity = new ObservableCollection<Activity>(activities);
-            listView.ItemsSource = _Activity;
 
+            int firstDataIx = content.IndexOf('[');
+            int lastDataIx = content.IndexOf(']');
+            string contentFormatted = content.Substring(firstDataIx, (lastDataIx - firstDataIx + 1));
+
+            activities = JsonConvert.DeserializeObject<List<Activity>>(contentFormatted);
+			DateTime currentDate = Convert.ToDateTime(DateTime.Today);
+
+            foreach (var activity in activities)
+            {
+                if (activity.Startdate >= currentDate && currentDate <= activity.EndDate){
+                    _Activity.Add(activity);
+                }
+            }
             base.OnAppearing();
         }
 
-        async void ToolbarItem_Activated(object sender, EventArgs e)
+        // Eventhandler - create new activity without elapsed timed
+        void AddNewTask_Clicked(object sender, EventArgs e)
         {
-            var page = new NewActivityModal(_Activity);
-            await Navigation.PushModalAsync(page);
-        }
-
-        void Button_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Test", "Dette er test", "OK", "Cancel");
+            CreateListItem("0"); 
         }
 
 		void CreateListItem(String elapsed)
 		{
-			//Navigation.PushModalAsync(new ExistingTaskModal(_People, elapsed));
-
-			//_People.Add(new Activity { Name = elapsed, Status = "Hej" });
-		}
-
-
-
-		ObservableCollection<Activity> GetTasks()
-		{
-			ObservableCollection<Activity> Tasks = new ObservableCollection<Activity>();
-			return Tasks;
+            Navigation.PushModalAsync(new NewActivityModal(_Activity, activities, elapsed));
 		}
 
 		// Timer toggle event
@@ -89,10 +89,11 @@ namespace EasyTime
 			return true;
 		}
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            var test = (Label)sender;
-            test.Text = "det virker!";
-        }
+        //private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //{
+        //    var test = (Label)sender;
+        //    test.Text = "det virker!";
+        //}
+
     }
 }
