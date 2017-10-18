@@ -31,8 +31,8 @@ namespace EasyTime
                 new menuItems{Name="Kørsel", Imageurl="http://lorempixel.com/100/100/business/3"},
                 new menuItems{Name="Statistik", Imageurl="http://lorempixel.com/100/100/business/4"},
                 new menuItems{Name="Synkronisering", Imageurl="http://lorempixel.com/100/100/business/5"},
-                new menuItems{Name="TestSide", Imageurl="http://lorempixel.com/100/100/business/6"},
-                new menuItems{Name="REST2", Imageurl="http://lorempixel.com/100/100/business/7"}
+                //new menuItems{Name="TestSide", Imageurl="http://lorempixel.com/100/100/business/6"},
+                //new menuItems{Name="REST2", Imageurl="http://lorempixel.com/100/100/business/7"}
             };
             MainMenuList.ItemsSource = _Menus;
         }

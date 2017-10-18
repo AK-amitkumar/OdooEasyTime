@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage Title="Idag" xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage Title="Idag" 
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyTime.TodayPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated"></ToolbarItem>
+        <ToolbarItem Icon="plus.png" Activated="AddNewTask_Clicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
+    
     <StackLayout>
         <ListView x:Name="listView" HasUnevenRows="True">
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="5">
-                            <!--<Image Source="{Binding Imageurl}"></Image>-->
                             <StackLayout HorizontalOptions="StartAndExpand">
-                                <Label Text="{Binding TaskName}" FontSize="Large"></Label>
-                                <Label Text="{Binding ProjectName}" TextColor="Gray"></Label>
+                                <Label Text="{Binding Title}" FontSize="Large"></Label>
+                                <Label Text="{Binding Description}" TextColor="Gray"></Label>
                             </StackLayout>
                             <StackLayout>
-                                <Label Text="{Binding TimeElapsed}"/>
+                                <Label x:Name="ElapsedTime" Text="{Binding timeElapsed}"/>
                             </StackLayout>
-                            <Stepper x:Name="stepper" Increment="5" Minimum="0" Maximum="1000"></Stepper>
+                            <Stepper x:Name="stepper" Increment="5" Value="{Binding Source={x:Reference ElapsedTime}}"></Stepper>
                             <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"></Label>
-                           <!-- <Button Text="test" Clicked="Button_Clicked"></Button> -->
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            
         </ListView>
 
         <StackLayout VerticalOptions="End">
