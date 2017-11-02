@@ -19,8 +19,10 @@ namespace EasyTimeOdoo
     {
         ObservableCollection<Activity> _Activity;
         Stopwatch sw;
-        const string Url = "http://localhost:3000/tasks/";
+        const string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start=19-09-2016&end=31-12-2017";
         HttpClient _client = new HttpClient();
+
+        //https://ucn.odoologin.dk/timesheet/add?task_id=20&user_id=7&timesheet_date=02-11-2017&timesheet_description=as&timesheet_duration=2
 
         public TodayPage()
         {
