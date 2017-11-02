@@ -46,7 +46,7 @@ namespace EasyTimeOdoo
         {
             //Navigation.PushModalAsync(new ExistingTaskModal(_People, elapsed));
 
-            //_People.Add(new Activity { Name = elapsed, Status = "Hej" });
+            //_People.Add(new Activity { Name = elapsed, Status = "Hej"  });
         }
         ObservableCollection<Activity> GetTasks()
         {
