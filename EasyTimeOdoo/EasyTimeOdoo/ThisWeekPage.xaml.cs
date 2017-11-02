@@ -30,7 +30,7 @@ namespace EasyTimeOdoo
             var content = await _client.GetStringAsync(Url);
             var activities = JsonConvert.DeserializeObject<List<Activity>>(content);
             _Activity = new ObservableCollection<Activity>(activities);
-            listView.ItemsSource = _Activity;
+            //listView.ItemsSource = _Activity;
 
             base.OnAppearing();
         }
