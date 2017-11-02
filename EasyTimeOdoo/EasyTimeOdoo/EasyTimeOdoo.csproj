@@ -75,6 +75,7 @@
     <Compile Include="Modal\NewActivityDriveModal.xaml.cs">
       <DependentUpon>NewActivityDriveModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\TaskResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

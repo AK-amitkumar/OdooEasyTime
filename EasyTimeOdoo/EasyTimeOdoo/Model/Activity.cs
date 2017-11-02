@@ -8,12 +8,12 @@ namespace EasyTimeOdoo.Model
 {
     public class Activity
     {
-        public string startDate { get; set; }
-        public string projectName { get; set; }
-        public string totalHours { get; set; }
-        public string endDate { get; set; }
-        public int id { get; set; }
-        public string name { get; set; }
-        public int projectId { get; set; }
+        public string task_start_date { get; set; }
+        public string project_name { get; set; }
+        public double task_total_hours { get; set; }
+        public string task_end_date { get; set; }
+        public int task_id { get; set; }
+        public string task_name { get; set; }
+        public int project_id { get; set; }
     }
 }

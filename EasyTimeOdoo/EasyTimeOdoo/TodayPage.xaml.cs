@@ -19,7 +19,7 @@ namespace EasyTimeOdoo
     {
         ObservableCollection<Activity> _Activity;
         Stopwatch sw;
-        string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start="+DateTime.Now.ToString("dd/mm/yyyy") + "&end="+DateTime.Now.ToString("dd/mm/yyyy");
+        string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start="+DateTime.Now.ToString("dd-MM-yyyy") + "&end="+DateTime.Now.ToString("dd-MM-yyyy");
         HttpClient _client = new HttpClient();
 
         //https://ucn.odoologin.dk/timesheet/add?task_id=20&user_id=7&timesheet_date=02-11-2017&timesheet_description=as&timesheet_duration=2
@@ -32,8 +32,8 @@ namespace EasyTimeOdoo
         protected override async void OnAppearing()
         {
             var content = await _client.GetStringAsync(Url);
-            var activities = JsonConvert.DeserializeObject<List<Activity>>(content);
-            _Activity = new ObservableCollection<Activity>(activities);
+            var activities = JsonConvert.DeserializeObject<TaskResponse>(content);
+            _Activity = new ObservableCollection<Activity>(activities.data);
             listView.ItemsSource = _Activity;
 
             base.OnAppearing();

@@ -19,26 +19,26 @@ namespace EasyTimeOdoo
             InitializeComponent();
         }
 
-        public String StartDate(String date)
-        {
-            switch (date)
-            {
-                case "Mon":
-                    return DateTime.Now.ToString("dd/mm/yyyy");
-                    break;
+        //public String StartDate(String date)
+        //{
+        //    switch (date)
+        //    {
+        //        case "Mon":
+        //            return DateTime.Now.ToString("dd/mm/yyyy");
+        //            break;
 
-                case "Tue":
-                    return DateTime.Now.AddDays(-1).ToString("dd/mm/yyyy");
-                    break;
+        //        case "Tue":
+        //            return DateTime.Now.AddDays(-1).ToString("dd/mm/yyyy");
+        //            break;
 
-                case "Wed":
-                    return DateTime.Now.AddDays(-2).ToString("dd/mm/yyyy");
-                    break;
+        //        case "Wed":
+        //            return DateTime.Now.AddDays(-2).ToString("dd/mm/yyyy");
+        //            break;
 
-                case "Thu":
-                    return DateTime.Now.AddDays(-3).ToString("dd/mm/yyyy");
-                    break;
-            }
-        }
+        //        case "Thu":
+        //            return DateTime.Now.AddDays(-3).ToString("dd/mm/yyyy");
+        //            break;
+        //    }
+        //}
     }
 }
