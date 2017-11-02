@@ -1,14 +1,9 @@
 ﻿using EasyTimeOdoo.Model;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using EasyTimeOdoo.Modal;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,6 +13,7 @@ namespace EasyTimeOdoo
     public partial class TodayPage : ContentPage
     {
         ObservableCollection<Activity> _Activity;
+        ObservableCollection<menuItems> _Menus;
         Stopwatch sw;
         string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start="+DateTime.Now.ToString("dd-MM-yyyy") + "&end="+DateTime.Now.ToString("dd-MM-yyyy");
         HttpClient _client = new HttpClient();
@@ -28,6 +24,7 @@ namespace EasyTimeOdoo
         {
             InitializeComponent();
             sw = new Stopwatch();
+            //FillMenu();
         }
         protected override async void OnAppearing()
         {
@@ -87,6 +84,51 @@ namespace EasyTimeOdoo
             var test = (Label)sender;
             test.Text = "det virker!";
         }
+
+
+        //public void FillMenu()
+        //{
+        //    _Menus = new ObservableCollection<menuItems>
+        //    {
+        //        new menuItems{Name="Idag", Imageurl="http://lorempixel.com/100/100/business/1"},
+        //        new menuItems{Name="Denne uge", Imageurl="http://lorempixel.com/100/100/business/2"},
+        //        new menuItems{Name="Kørsel", Imageurl="http://lorempixel.com/100/100/business/3"},
+        //        new menuItems{Name="Statistik", Imageurl="http://lorempixel.com/100/100/business/4"},
+        //        //new menuItems{Name="Synkronisering", Imageurl="http://lorempixel.com/100/100/business/5"},
+        //    };
+        //    MainMenuList.ItemsSource = _Menus;
+        //}
+
+        //void MainMenuList_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    //Dette er en midlertidig løsning
+        //    var menu = e.Item as menuItems;
+
+        //    if (menu.Name == "Idag")
+        //    {
+        //        Detail = new NavigationPage(new TodayPage());
+        //        IsPresented = false;
+        //    }
+        //    if (menu.Name == "Denne uge")
+        //    {
+        //        Detail = new NavigationPage(new ThisWeekPage());
+        //    }
+        //    if (menu.Name == "Kørsel")
+        //    {
+        //        Detail = new NavigationPage(new DrivingPage());
+        //    }
+        //    if (menu.Name == "Statistik")
+        //    {
+        //        Detail = new NavigationPage(new StatisticsPage());
+        //    }
+
+        //    //if (menu.Name == "Synkronisering")
+        //    //{
+        //    //    await Navigation.PushAsync(new SynchronizePage());
+        //    //}
+
+        //    MainMenuList.SelectedItem = null;
+        //}
 
     }
 }

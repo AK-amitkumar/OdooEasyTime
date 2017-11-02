@@ -41,29 +41,14 @@
     <Compile Include="DrivingPage.xaml.cs">
       <DependentUpon>DrivingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FrontPage.xaml.cs">
-      <DependentUpon>FrontPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Modal\NewActivityModal.xaml.cs">
       <DependentUpon>NewActivityModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\menuItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rest2.xaml.cs">
-      <DependentUpon>Rest2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Restful.xaml.cs">
-      <DependentUpon>Restful.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StatisticsPage.xaml.cs">
       <DependentUpon>StatisticsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SynchronizePage.xaml.cs">
-      <DependentUpon>SynchronizePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ThisWeekPage.xaml.cs">
       <DependentUpon>ThisWeekPage.xaml</DependentUpon>
@@ -76,17 +61,20 @@
       <DependentUpon>NewActivityDriveModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\TaskResponse.cs" />
+    <Compile Include="MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\NewActivityDriveModal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -128,12 +116,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FrontPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="TodayPage.xaml">
@@ -155,24 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="StatisticsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="SynchronizePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Restful.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Rest2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

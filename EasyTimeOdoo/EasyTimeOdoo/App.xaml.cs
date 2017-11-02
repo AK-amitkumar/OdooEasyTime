@@ -13,7 +13,7 @@ namespace EasyTimeOdoo
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new FrontPage());
+            MainPage = new MasterPage();
         }
 
         protected override void OnStart()
