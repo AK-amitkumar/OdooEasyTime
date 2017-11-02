@@ -19,7 +19,7 @@ namespace EasyTimeOdoo
     {
         ObservableCollection<Activity> _Activity;
         Stopwatch sw;
-        const string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start=19-09-2016&end=31-12-2017";
+        string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start="+DateTime.Now.ToString("dd/mm/yyyy") + "&end="+DateTime.Now.ToString("dd/mm/yyyy");
         HttpClient _client = new HttpClient();
 
         //https://ucn.odoologin.dk/timesheet/add?task_id=20&user_id=7&timesheet_date=02-11-2017&timesheet_description=as&timesheet_duration=2
@@ -37,11 +37,6 @@ namespace EasyTimeOdoo
             listView.ItemsSource = _Activity;
 
             base.OnAppearing();
-        }
-        async void ToolbarItem_Activated(object sender, EventArgs e)
-        {
-            var page = new NewActivityModal(_Activity);
-            await Navigation.PushModalAsync(page);
         }
         void Button_Clicked(object sender, EventArgs e)
         {

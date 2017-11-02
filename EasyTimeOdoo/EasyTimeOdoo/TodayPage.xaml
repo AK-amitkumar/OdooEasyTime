@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyTimeOdoo.TodayPage">
     
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated"></ToolbarItem>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <StackLayout>
         <ListView x:Name="listView" HasUnevenRows="True">
             <ListView.ItemTemplate>
