@@ -68,6 +68,10 @@
     <Compile Include="TodayPage.xaml.cs">
       <DependentUpon>TodayPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ActivityDriving.cs" />
+    <Compile Include="Modal\NewActivityDriveModal.xaml.cs">
+      <DependentUpon>NewActivityDriveModal.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -76,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\NewActivityDriveModal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
