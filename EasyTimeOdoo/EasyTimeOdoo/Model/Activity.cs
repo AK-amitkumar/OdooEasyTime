@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyTimeOdoo.Model
 {
-    class Activity
+    public class Activity
     {
         public string Title { get; set; }
         public int TaskID { get; set; }

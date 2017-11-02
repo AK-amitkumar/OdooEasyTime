@@ -47,6 +47,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modal\NewActivityModal.xaml.cs">
+      <DependentUpon>NewActivityModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\menuItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,9 +126,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modal\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="TodayPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -164,6 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Rest2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modal\NewActivityModal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
