@@ -2,7 +2,7 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.MasterPage" Title="master">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="master" Icon="hamburger.png">
+        <ContentPage Title="master" Icon="hamburger.png" BackgroundColor="Black">
             <StackLayout Margin="5,30,5,5" BackgroundColor="Black">
                 <Button Text="Idag" Image="today.png" BackgroundColor="White" TextColor="Black" Margin="10" Clicked="TodayClicked"></Button>
                 <Button Text="Denne uge" Image="calendar.png" BackgroundColor="White" TextColor="Black" Margin="10" Clicked="WeekClicked" ></Button>
@@ -13,7 +13,6 @@
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
-
     </MasterDetailPage.Detail>
 
     

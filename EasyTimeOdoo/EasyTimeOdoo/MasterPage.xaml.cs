@@ -10,12 +10,12 @@ namespace EasyTimeOdoo
         public MasterPage()
         {
             InitializeComponent();
-            Detail = new NavigationPage(new TodayPage());
+            Detail = new NavigationPage(new TodayPage()) {BarTextColor=Color.Black};
         }
 
         void TodayClicked(object sender, System.EventArgs e)
         {
-            Detail = new NavigationPage(new TodayPage());
+            Detail = new NavigationPage(new TodayPage()){ BarTextColor = Color.Black };
             IsPresented = false;
         }
 

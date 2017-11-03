@@ -13,7 +13,6 @@ namespace EasyTimeOdoo
     public partial class TodayPage : ContentPage
     {
         ObservableCollection<Activity> _Activity;
-        ObservableCollection<menuItems> _Menus;
         Stopwatch sw;
         string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start="+DateTime.Now.ToString("dd-MM-yyyy") + "&end="+DateTime.Now.ToString("dd-MM-yyyy");
         HttpClient _client = new HttpClient();
