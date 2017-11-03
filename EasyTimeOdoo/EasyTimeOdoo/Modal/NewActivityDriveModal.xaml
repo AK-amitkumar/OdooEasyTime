@@ -2,10 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.NewActivityDriveModal">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="angiv sted..." x:Name="titleEntry"></Entry>
-            <Entry Placeholder="angiv opgave..." x:Name="descriptionEntry"></Entry>
-            <Entry Placeholder="angiv km..." x:Name="distanceEntry"></Entry>
-            <Entry Placeholder="angiv dato..." x:Name="dateEntry"></Entry>
+            <Entry Placeholder="Beskrivelse..." x:Name="descriptionEntry"></Entry>
+            <Label Text= "Distance..." x:Name="distanceLabel"></Label>
+            <Label Text="Time..." x:Name="timeLabel"></Label>
             <Button Text="Opret opgave" Clicked="Button_Clicked" />
         </StackLayout>
     </ContentPage.Content>

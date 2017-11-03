@@ -5,6 +5,7 @@ using EasyTimeOdoo.Modal;
 using EasyTimeOdoo.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Diagnostics;
 
 namespace EasyTimeOdoo
 {
@@ -73,7 +74,11 @@ namespace EasyTimeOdoo
             }
         }
 
+        async void openModal()
+        {
+            var NewActivityDriveModal = new NewActivityDriveModal();
 
+        }
 
         bool UpdateLabel()
         {

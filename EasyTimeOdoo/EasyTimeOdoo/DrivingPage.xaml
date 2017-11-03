@@ -25,6 +25,8 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+    
+    
 
             <StackLayout VerticalOptions="End">
             <AbsoluteLayout BackgroundColor="Gray" Padding="0,15,0,2">
