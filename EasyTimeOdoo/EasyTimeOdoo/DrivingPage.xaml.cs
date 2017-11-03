@@ -10,10 +10,14 @@ namespace EasyTimeOdoo
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DrivingPage : ContentPage
     {
+
+        Stopwatch sw;
+
         public DrivingPage()
         {
             InitializeComponent();
             listview.ItemsSource = _activeDrive;
+            sw = new Stopwatch();
         }
 
         public ObservableCollection<ActivityDriving> _activeDrive = new ObservableCollection<ActivityDriving>
