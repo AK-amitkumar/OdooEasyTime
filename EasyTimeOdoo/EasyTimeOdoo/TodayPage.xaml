@@ -5,6 +5,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                                <MenuItem Clicked="Start_clicked" CommandParameter="{Binding .}" Text="Start" ></MenuItem>
+                        </ViewCell.ContextActions>
+                        
                         <StackLayout Orientation="Horizontal" Padding="5">
                             <!--<Image Source="{Binding Imageurl}"></Image>-->
                             <StackLayout HorizontalOptions="StartAndExpand">

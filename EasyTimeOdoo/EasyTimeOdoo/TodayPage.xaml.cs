@@ -78,6 +78,11 @@ namespace EasyTimeOdoo
             return true;
         }
 
+        void Start_clicked(object sender, System.EventArgs e)
+        {
+            TimerBtn_Clicked(sender,e);
+        }
+
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var test = (Label)sender;

@@ -26,6 +26,7 @@ namespace EasyTimeOdoo
         public ThisWeekPage()
         {
             InitializeComponent();
+
         }
 
         protected override async void OnAppearing()
@@ -44,7 +45,7 @@ namespace EasyTimeOdoo
 
         public void getWeekDates()
         {
-            switch (DateTime.Now.ToString("dd-MM-yyyy"))
+            switch (DateTime.Now.ToString("ddd"))
             {
                 case "Mon":
                     startDate = DateTime.Now.ToString("dd-MM-yyyy");
