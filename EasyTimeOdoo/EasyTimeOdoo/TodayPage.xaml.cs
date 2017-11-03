@@ -1,4 +1,5 @@
 ﻿using EasyTimeOdoo.Model;
+using EasyTimeOdoo.Modal;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
@@ -14,17 +15,21 @@ namespace EasyTimeOdoo
     {
         ObservableCollection<Activity> _Activity;
         Stopwatch sw;
-        string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=7&start="+DateTime.Now.ToString("dd-MM-yyyy") + "&end="+DateTime.Now.ToString("dd-MM-yyyy");
+        int userID = 7;
+        string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=";
         HttpClient _client = new HttpClient();
+        MenuItem starterItem;
+
 
         //https://ucn.odoologin.dk/timesheet/add?task_id=20&user_id=7&timesheet_date=02-11-2017&timesheet_description=as&timesheet_duration=2
 
         public TodayPage()
         {
+            Url = Url + userID + "&start=" + DateTime.Now.ToString("dd-MM-yyyy") + "&end=" + DateTime.Now.ToString("dd-MM-yyyy");
             InitializeComponent();
             sw = new Stopwatch();
-            //FillMenu();
         }
+
         protected override async void OnAppearing()
         {
             var content = await _client.GetStringAsync(Url);
@@ -34,26 +39,22 @@ namespace EasyTimeOdoo
 
             base.OnAppearing();
         }
-        void Button_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Test", "Dette er test", "OK", "Cancel");
-        }
-        void CreateListItem(String elapsed)
-        {
-            //Navigation.PushModalAsync(new ExistingTaskModal(_People, elapsed));
 
-            //_People.Add(new Activity { Name = elapsed, Status = "Hej"  });
-        }
-        ObservableCollection<Activity> GetTasks()
+        async void UpdateListItem(Activity item, string elapsed)
         {
-            ObservableCollection<Activity> Tasks = new ObservableCollection<Activity>();
-            return Tasks;
+            string url = "https://ucn.odoologin.dk/timesheet/add?task_id=" + item.task_id + "&user_id=" + userID + "&timesheet_date=" + DateTime.Now.ToString("dd-MM-yyyy") + "&timesheet_description=" + "hej" + "&timesheet_duration=" + elapsed;
+            await _client.PostAsync(url, null);
         }
 
         // Timer toggle event
 
         void TimerBtn_Clicked(object sender, EventArgs e)
         {
+            if (sender is MenuItem)
+            {
+                starterItem = (MenuItem)sender;
+            }
+
             if (TimerBtn.Text == "Start")
             {
                 sw.Start();
@@ -66,10 +67,18 @@ namespace EasyTimeOdoo
                 sw.Stop();
                 TimerBtn.Text = "Start";
                 TimerBtn.BackgroundColor = Color.Green;
-                var elapsed = sw.Elapsed.ToString(@"hh\:mm\:ss");
-                CreateListItem(elapsed);
+                var elapsed = Math.Round(sw.Elapsed.TotalHours,3).ToString();
                 sw.Reset();
+
+                if (starterItem != null)
+                {
+                    UpdateListItem((Activity)starterItem.BindingContext, elapsed);
+                }
+                else{
+                    Navigation.PushModalAsync(new NewActivityModal(elapsed));
+                }
             }
+
         }
 
         bool UpdateLabel()
@@ -80,59 +89,7 @@ namespace EasyTimeOdoo
 
         void Start_clicked(object sender, System.EventArgs e)
         {
-            TimerBtn_Clicked(sender,e);
+            TimerBtn_Clicked(sender, e);
         }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            var test = (Label)sender;
-            test.Text = "det virker!";
-        }
-
-
-        //public void FillMenu()
-        //{
-        //    _Menus = new ObservableCollection<menuItems>
-        //    {
-        //        new menuItems{Name="Idag", Imageurl="http://lorempixel.com/100/100/business/1"},
-        //        new menuItems{Name="Denne uge", Imageurl="http://lorempixel.com/100/100/business/2"},
-        //        new menuItems{Name="Kørsel", Imageurl="http://lorempixel.com/100/100/business/3"},
-        //        new menuItems{Name="Statistik", Imageurl="http://lorempixel.com/100/100/business/4"},
-        //        //new menuItems{Name="Synkronisering", Imageurl="http://lorempixel.com/100/100/business/5"},
-        //    };
-        //    MainMenuList.ItemsSource = _Menus;
-        //}
-
-        //void MainMenuList_ItemTapped(object sender, ItemTappedEventArgs e)
-        //{
-        //    //Dette er en midlertidig løsning
-        //    var menu = e.Item as menuItems;
-
-        //    if (menu.Name == "Idag")
-        //    {
-        //        Detail = new NavigationPage(new TodayPage());
-        //        IsPresented = false;
-        //    }
-        //    if (menu.Name == "Denne uge")
-        //    {
-        //        Detail = new NavigationPage(new ThisWeekPage());
-        //    }
-        //    if (menu.Name == "Kørsel")
-        //    {
-        //        Detail = new NavigationPage(new DrivingPage());
-        //    }
-        //    if (menu.Name == "Statistik")
-        //    {
-        //        Detail = new NavigationPage(new StatisticsPage());
-        //    }
-
-        //    //if (menu.Name == "Synkronisering")
-        //    //{
-        //    //    await Navigation.PushAsync(new SynchronizePage());
-        //    //}
-
-        //    MainMenuList.SelectedItem = null;
-        //}
-
     }
 }

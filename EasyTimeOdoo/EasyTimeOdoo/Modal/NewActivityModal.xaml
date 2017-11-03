@@ -1,24 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyTimeOdoo.Modal.NewActivityModal">
     
-    <TableView Intent="Form">
-        <TableRoot>
-            <TableSection x:Name="table">
-                <TextCell Text="Projekt" Detail="Task"></TextCell>
-                <EntryCell Label="Title" Placeholder="Placeholder her..."></EntryCell>
+    <ListView x:Name="taskList">
+        <ListView.ItemTemplate>
+            <DataTemplate>
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="13, 0">
-                        <Label Text="Starts" VerticalOptions="Center"></Label>
-                        <DatePicker Date="1 Jan 2016" HorizontalOptions="End"></DatePicker>
-                        <TimePicker Time="13:00" HorizontalOptions="Center"></TimePicker>
-                        <TimePicker Time="13:00" HorizontalOptions="Start"></TimePicker>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding task_name}"></Label>
+                        <Label Text="{Binding task_total_hours}"></Label>
+                        <Button Text="Opdater" Clicked="task_clicked"></Button>
                     </StackLayout>
                 </ViewCell>
-            </TableSection>
-        </TableRoot>
-    </TableView>
+            </DataTemplate>
+
+        </ListView.ItemTemplate>                   
+
+    </ListView>
 
 
     <!--  <ContentPage.Content>
