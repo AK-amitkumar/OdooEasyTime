@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.ActivityModal">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="10,40,10,10">
+                <StackLayout>
+                    <Label Text="Opgave: ">
+                    </Label>
+                    <Label Text="Projekt: ">
+                    </Label>
+                    <Label Text="Startdato: ">
+                    </Label>
+                    <Label Text="Slutdato: ">
+                    </Label>
+                    <Label Text="Estimeret tid: ">
+                    </Label>
+                    <Label Text="Tid brugt: ">
+                    </Label>
+                    <Button Text="Tilføj billede?" Clicked="AddPictureBtn_clicked">
+                    </Button>
+                </StackLayout>
+                <StackLayout>
+                    <Label x:Name="Tasklbl">
+                    </Label>
+                    <Label x:Name="Projectlbl">
+                    </Label>
+                    <Label x:Name="Startlbl">
+                    </Label>
+                    <Label x:Name="Endlbl">
+                    </Label>
+                    <Label x:Name="Timelbl">
+                    </Label>
+                    <Label x:Name="Elapsedlbl">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout BackgroundColor="Black" Orientation="Horizontal">
+                <Label Text="Materialer" TextColor="White"></Label>
+                <Button Image="plus.png" Clicked="AddMaterialBtn_clicked"></Button>
+            </StackLayout>
+            <StackLayout VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button WidthRequest="100" BorderWidth="1" Text="Annullér" BackgroundColor="Red" TextColor="White" Clicked="AnnullerBtn_clicked">
+                </Button>
+                <Button WidthRequest="100" BorderWidth="1" Text="Gem" BackgroundColor="Green" TextColor="White" Clicked="GemBtm_clicked">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

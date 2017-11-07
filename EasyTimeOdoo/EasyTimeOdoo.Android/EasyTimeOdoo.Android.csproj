@@ -140,6 +140,9 @@
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.247\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="FastAndroidCamera">
+      <HintPath>..\..\packages\FastAndroidCamera.2.0.0\lib\MonoAndroid403\FastAndroidCamera.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -169,7 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasyTimeOdoo\EasyTimeOdoo.csproj">
-      <Project>{4fbc3c9c-2323-4725-a3d7-a58508e2d1bb}</Project>
+      <Project>{6203BBF4-F34A-4178-885E-39056F9D040F}</Project>
       <Name>EasyTimeOdoo</Name>
     </ProjectReference>
   </ItemGroup>

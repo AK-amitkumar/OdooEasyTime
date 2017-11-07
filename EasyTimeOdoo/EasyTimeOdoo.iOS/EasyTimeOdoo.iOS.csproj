@@ -121,6 +121,7 @@
     <BundleResource Include="Resources\car.png" />
     <BundleResource Include="Resources\calendar.png" />
     <BundleResource Include="Resources\play.png" />
+    <BundleResource Include="Resources\plus.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Geolocator, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">

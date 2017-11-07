@@ -10,7 +10,7 @@ namespace EasyTimeOdoo
         public MasterPage()
         {
             InitializeComponent();
-            Detail = new NavigationPage(new TodayPage()) {BarTextColor=Color.Black};
+            Detail = new NavigationPage(new TodayPage()) {BarBackgroundColor=Color.Black, BarTextColor=Color.Black};
         }
 
         void TodayClicked(object sender, System.EventArgs e)
@@ -21,19 +21,19 @@ namespace EasyTimeOdoo
 
         void WeekClicked(object sender, System.EventArgs e)
         {
-            Detail = new NavigationPage(new ThisWeekPage());
+            Detail = new NavigationPage(new ThisWeekPage()){ BarTextColor = Color.Black };
             IsPresented = false;
         }
 
         void DrivingClicked(object sender, System.EventArgs e)
         {
-            Detail = new NavigationPage(new DrivingPage());
+            Detail = new NavigationPage(new DrivingPage()){ BarTextColor = Color.Black };
             IsPresented = false;
         }
 
         void StatsClicked(object sender, System.EventArgs e)
         {
-            Detail = new NavigationPage(new StatisticsPage());
+            Detail = new NavigationPage(new StatisticsPage()){ BarTextColor = Color.Black };
             IsPresented = false;
         }
     }

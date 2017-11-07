@@ -48,7 +48,7 @@ namespace EasyTimeOdoo
 
         // Timer toggle event
 
-        void TimerBtn_Clicked(object sender, EventArgs e)
+        async void TimerBtn_Clicked(object sender, EventArgs e)
         {
             if (sender is MenuItem)
             {
@@ -75,7 +75,7 @@ namespace EasyTimeOdoo
                     UpdateListItem((Activity)starterItem.BindingContext, elapsed);
                 }
                 else{
-                    Navigation.PushModalAsync(new NewActivityModal(elapsed));
+                    await Navigation.PushModalAsync(new NewActivityModal(elapsed));
                 }
             }
 
@@ -90,6 +90,13 @@ namespace EasyTimeOdoo
         void Start_clicked(object sender, System.EventArgs e)
         {
             TimerBtn_Clicked(sender, e);
+        }
+
+        void ViewCell_Tapped(object sender, System.EventArgs e)
+        {
+            ViewCell vc = (ViewCell)sender;
+            Activity item = (Activity)vc.BindingContext;
+            Navigation.PushModalAsync(new ActivityModal(item));
         }
     }
 }

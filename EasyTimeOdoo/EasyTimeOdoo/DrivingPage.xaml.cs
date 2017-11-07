@@ -24,8 +24,8 @@ namespace EasyTimeOdoo
 
         public ObservableCollection<ActivityDriving> _activeDrive = new ObservableCollection<ActivityDriving>
             {
-                new ActivityDriving{Title = "Odoo House", Description = "Møde", Distance = "14", sDate = "10-10-0217"},
-                new ActivityDriving{Title = "Odoo House", Description = "Mail opsætning", Distance = "7", sDate = "12-10-0217"}
+                //new ActivityDriving{Title = "Odoo House", Description = "Møde", Distance = "14", sDate = "10-10-0217"},
+                //new ActivityDriving{Title = "Odoo House", Description = "Mail opsætning", Distance = "7", sDate = "12-10-0217"}
             };
 
         async void ToolbarItem_Activated(object sender, EventArgs e)
