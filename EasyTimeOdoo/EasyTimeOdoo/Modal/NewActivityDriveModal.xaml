@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.NewActivityDriveModal">
-    <ContentPage.Content>
-        <StackLayout>
-            <Entry Placeholder="Beskrivelse..." x:Name="descriptionEntry"></Entry>
-            <Label Text= "Distance..." x:Name="distanceLabel"></Label>
-            <Label Text="Time..." x:Name="timeLabel"></Label>
-            <Button Text="Opret opgave" Clicked="Button_Clicked" />
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8.000*"></RowDefinition>
+            <RowDefinition Height="2.000*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="0" BackgroundColor="Red" Grid.ColumnSpan="2">
+            <ListView x:Name="listView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <!--<Image Source="{Binding Imageurl}"></Image>-->
+                                <StackLayout HorizontalOptions="Start">
+                                    <Label Text="{Binding task_name}" FontSize="Large">
+                                    </Label>
+                                    <Label Text="{Binding project_name}" TextColor="Gray">
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="{Binding task_total_hours}"  />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout Padding="25" Grid.Row="1" Grid.Column="0" BackgroundColor="Green">
+            <Label FontSize="Large" Text="tid"></Label>
+            <Label FontSize="Large" Text="distance"></Label>
+        </StackLayout>
+        <StackLayout Padding="25" Grid.Row="1" Grid.Column="1" BackgroundColor="Yellow">
+            <Label FontSize="Large" x:Name="lblTime" Text="tid"></Label>
+            <Label FontSize="Large" Text="distance" x:Name="lblDistance"></Label>
+        </StackLayout>
+
+    </Grid>
+
 </ContentPage>

@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using EasyTimeOdoo.Model;
 using Xamarin.Forms;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace EasyTimeOdoo.Modal
 {
     public partial class NewActivityDriveModal : ContentPage
     {
-        ObservableCollection<ActivityDriving> _activityDriveList;
+        ObservableCollection<Activity> _Activity;
+        int userID = 7;
+        string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=";
+        HttpClient _client = new HttpClient();
+        string elapsed;
 
-        public NewActivityDriveModal()
+        public NewActivityDriveModal(string elapsed)
         {
-            // tom for nu
-        }
-
-        public NewActivityDriveModal(ObservableCollection<ActivityDriving> _activityDrive)
-        {
+            Url = Url + userID + "&start=" + DateTime.Now.ToString("dd-MM-yyyy") + "&end=" + DateTime.Now.ToString("dd-MM-yyyy");
+            this.elapsed = elapsed;
             InitializeComponent();
-            _activityDriveList = _activityDrive;
+            
         }
-
-        async void Button_Clicked(object sender, EventArgs e)
+        protected async override void OnAppearing()
         {
-            ActivityDriving ad = new ActivityDriving {Description = descriptionEntry.Text, Distance = distanceLabel.Text, timeElapsed = timeLabel.Text };
-            _activityDriveList.Add(ad);
-            await Navigation.PopModalAsync();
+            var content = await _client.GetStringAsync(Url);
+            var activities = JsonConvert.DeserializeObject<TaskResponse>(content);
+            _Activity = new ObservableCollection<Activity>(activities.data);
+            listView.ItemsSource = _Activity;
+            lblTime.Text = elapsed;
+
+            base.OnAppearing();
         }
     }
 }

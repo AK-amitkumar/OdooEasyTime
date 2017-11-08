@@ -5,7 +5,7 @@ using EasyTimeOdoo.Modal;
 using EasyTimeOdoo.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace EasyTimeOdoo
 {
@@ -28,11 +28,6 @@ namespace EasyTimeOdoo
                 //new ActivityDriving{Title = "Odoo House", Description = "Mail opsætning", Distance = "7", sDate = "12-10-0217"}
             };
 
-        async void ToolbarItem_Activated(object sender, EventArgs e)
-        {
-            var page = new NewActivityDriveModal(_activeDrive);
-            await Navigation.PushModalAsync(page);
-        }
 
         void Button_Clicked(object sender, EventArgs e)
         {
@@ -69,16 +64,17 @@ namespace EasyTimeOdoo
                 TimerBtn.Text = "Start";
                 TimerBtn.BackgroundColor = Color.Green;
                 var elapsed = sw.Elapsed.ToString(@"hh\:mm\:ss");
-                CreateListItem(elapsed);
+                var page = new NewActivityDriveModal(elapsed);
+                Navigation.PushModalAsync(page);
                 sw.Reset();
             }
         }
 
-        async void openModal()
-        {
-            var NewActivityDriveModal = new NewActivityDriveModal();
+        //async void openModal()
+        //{
+        //    var NewActivityDriveModal = new NewActivityDriveModal();
 
-        }
+        //}
 
         bool UpdateLabel()
         {
@@ -86,7 +82,7 @@ namespace EasyTimeOdoo
             return true;
         }
 
-        void Start_clicked(object sender, System.EventArgs e)
+        void Start_clickedAsync(object sender, System.EventArgs e)
         {
             TimerBtn_Clicked(sender, e);
         }

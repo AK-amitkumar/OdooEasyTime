@@ -38,7 +38,7 @@ namespace EasyTimeOdoo.Modal
             string url = "https://ucn.odoologin.dk/timesheet/add?task_id=" + item.task_id + "&user_id=" + userID + "&timesheet_date=" + DateTime.Now.ToString("dd-MM-yyyy") + "&timesheet_description=" + "hej" + "&timesheet_duration=" + elapsed;
             await _client.PostAsync(url, null);
 
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
 
         async void getWeeks(){
