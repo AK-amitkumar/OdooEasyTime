@@ -14,10 +14,12 @@ namespace EasyTimeOdoo.Modal
         int userID = 7;
         string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=";
         HttpClient _client = new HttpClient();
+        string elapsed;
 
         public NewActivityDriveModal(string elapsed)
         {
             Url = Url + userID + "&start=" + DateTime.Now.ToString("dd-MM-yyyy") + "&end=" + DateTime.Now.ToString("dd-MM-yyyy");
+            this.elapsed = elapsed;
             InitializeComponent();
             
         }
@@ -27,6 +29,7 @@ namespace EasyTimeOdoo.Modal
             var activities = JsonConvert.DeserializeObject<TaskResponse>(content);
             _Activity = new ObservableCollection<Activity>(activities.data);
             listView.ItemsSource = _Activity;
+            lblTime.Text = elapsed;
 
             base.OnAppearing();
         }

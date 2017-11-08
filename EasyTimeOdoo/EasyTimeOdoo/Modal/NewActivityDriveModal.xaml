@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.NewActivityDriveModal">
-    <ContentPage.Content>
-        <StackLayout>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8.000*"></RowDefinition>
+            <RowDefinition Height="2.000*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="0" BackgroundColor="Red" Grid.ColumnSpan="2">
             <ListView x:Name="listView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -23,9 +33,17 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <AbsoluteLayout BackgroundColor="Gray" Padding="0,15,0,2">
-                <Label Text="test"></Label>
-            </AbsoluteLayout>
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout Padding="25" Grid.Row="1" Grid.Column="0" BackgroundColor="Green">
+            <Label FontSize="Large" Text="tid"></Label>
+            <Label FontSize="Large" Text="distance"></Label>
+        </StackLayout>
+        <StackLayout Padding="25" Grid.Row="1" Grid.Column="1" BackgroundColor="Yellow">
+            <Label FontSize="Large" x:Name="lblTime" Text="tid"></Label>
+            <Label FontSize="Large" Text="distance" x:Name="lblDistance"></Label>
+        </StackLayout>
+
+    </Grid>
+
 </ContentPage>
