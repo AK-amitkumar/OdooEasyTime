@@ -25,8 +25,8 @@ namespace EasyTimeOdoo
 
         public TodayPage()
         {
-            Url = Url + userID + "&start=" + DateTime.Now.ToString("dd-MM-yyyy") + "&end=" + DateTime.Now.ToString("dd-MM-yyyy");
             InitializeComponent();
+            Url = Url + userID + "&start=" + DateTime.Now.ToString("dd-MM-yyyy") + "&end=" + DateTime.Now.ToString("dd-MM-yyyy");           
             sw = new Stopwatch();
         }
 
@@ -35,7 +35,7 @@ namespace EasyTimeOdoo
             var content = await _client.GetStringAsync(Url);
             var activities = JsonConvert.DeserializeObject<TaskResponse>(content);
             _Activity = new ObservableCollection<Activity>(activities.data);
-            listView.ItemsSource = _Activity;
+            listView.ItemsSource = _Activity;            
 
             base.OnAppearing();
         }

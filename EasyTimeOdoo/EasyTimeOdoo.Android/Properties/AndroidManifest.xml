@@ -9,6 +9,6 @@
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:label="EasyTimeOdoo.Android">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDpst6HNkFNAyw_bl07FwVRpUOrLVNUIQ4"></meta-data>
+    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDpst6HNkFNAyw_bl07FwVRpUOrLVNUIQ4"></meta-data>
 	</application>
 </manifest>
