@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using EasyTimeOdoo.Model;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
@@ -9,11 +10,25 @@ namespace EasyTimeOdoo.Modal
     public partial class ActivityModal : ContentPage
     {
         Activity item;
+        ObservableCollection<MaterialLine> materials;
+
+        Dictionary<string, string> barcode = new Dictionary<string, string>();
 
         public ActivityModal(Activity item)
         {
-            this.item = item;
             InitializeComponent();
+
+            barcode.Add("5760466976459", "Mathilde Kakao");
+            barcode.Add("5741000133491", "Royal Classic");
+
+            // dummy data 
+            materials = new ObservableCollection<MaterialLine>();
+            materials.Add(new MaterialLine { quantity = 1, product_id = "CannotGetMaterialsAPI" });
+
+            materialList.ItemsSource = materials;
+            this.item = item;
+
+
 
             Tasklbl.Text = item.task_name;
             Projectlbl.Text = item.project_name;
@@ -33,15 +48,34 @@ namespace EasyTimeOdoo.Modal
             // push material lines to API
         }
 
-        void AddMaterialBtn_clicked(object sender, System.EventArgs e)
+        async void AddMaterialBtn_clicked(object sender, System.EventArgs e)
         {
-            // Add material to a list??
+            var scannerPage = new ZXingScannerPage();
+            // Navigate to our scanner page
+            await Navigation.PushModalAsync(scannerPage);
+
+            scannerPage.OnScanResult += (result) =>
+            {
+                scannerPage.IsScanning = false;
+                ZXing.BarcodeFormat barcodeFormat = result.BarcodeFormat;
+                string type = barcodeFormat.ToString();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Navigation.PopModalAsync();
+                    AddMaterialLine(result.ToString());
+                });
+            };
         }
 
-        async void AddPictureBtn_clicked(object sender, System.EventArgs e)
+        void AddPictureBtn_clicked(object sender, System.EventArgs e)
         {
-            // Navigate to our scanner page
-            await Navigation.PushModalAsync(new ZXingScannerPage());
+            // add picture logic 
+        }
+
+        void AddMaterialLine(string barcodeNumber){
+            materials.Add(new MaterialLine{quantity=1, product_id=barcodeNumber});
+            
+            
         }
     }
 }

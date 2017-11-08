@@ -67,6 +67,10 @@
     <Compile Include="Modal\ActivityModal.xaml.cs">
       <DependentUpon>ActivityModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modal\MaterialModal.xaml.cs">
+      <DependentUpon>MaterialModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MaterialLine.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -81,6 +85,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Modal\ActivityModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modal\MaterialModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

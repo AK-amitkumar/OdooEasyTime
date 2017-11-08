@@ -52,5 +52,7 @@
 	<string>RSaaa.test</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Can we use your camera</string>
 </dict>
 </plist>

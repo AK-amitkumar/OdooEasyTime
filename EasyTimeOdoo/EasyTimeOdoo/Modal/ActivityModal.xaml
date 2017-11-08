@@ -35,9 +35,29 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout BackgroundColor="Black" Orientation="Horizontal">
-                <Label Text="Materialer" TextColor="White"></Label>
-                <Button Image="plus.png" Clicked="AddMaterialBtn_clicked"></Button>
+                <Label Text="Materialer" TextColor="White">
+                </Label>
+                <Button Image="plus.png" Clicked="AddMaterialBtn_clicked">
+                </Button>
             </StackLayout>
+
+<!--Material list-->
+            <ListView x:Name="materialList" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+<!--                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="Start_clicked" CommandParameter="{Binding .}" Text="Start">
+                                </MenuItem>
+                            </ViewCell.ContextActions>-->
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label Text="{Binding product_id}"></Label>
+                                <Label Text="{Binding quantity}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <StackLayout VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Button WidthRequest="100" BorderWidth="1" Text="Annullér" BackgroundColor="Red" TextColor="White" Clicked="AnnullerBtn_clicked">
                 </Button>
