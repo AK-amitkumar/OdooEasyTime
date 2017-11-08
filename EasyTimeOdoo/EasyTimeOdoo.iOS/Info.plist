@@ -49,7 +49,7 @@
 	<key>CFBundleName</key>
 	<string>EasyTimeOdoo</string>
 	<key>CFBundleIdentifier</key>
-	<string>RAAA.test</string>
+	<string>RSaaa.test</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 </dict>

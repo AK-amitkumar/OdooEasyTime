@@ -40,9 +40,8 @@ namespace EasyTimeOdoo.Modal
 
         async void AddPictureBtn_clicked(object sender, System.EventArgs e)
         {
-            var scanPage = new ZXingScannerPage();
             // Navigate to our scanner page
-            await Navigation.PushAsync(scanPage);
+            await Navigation.PushModalAsync(new ZXingScannerPage());
         }
     }
 }
