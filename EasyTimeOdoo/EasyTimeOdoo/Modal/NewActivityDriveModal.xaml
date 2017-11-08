@@ -2,10 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.NewActivityDriveModal">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Beskrivelse..." x:Name="descriptionEntry"></Entry>
-            <Label Text= "Distance..." x:Name="distanceLabel"></Label>
-            <Label Text="Time..." x:Name="timeLabel"></Label>
-            <Button Text="Opret opgave" Clicked="Button_Clicked" />
+            <ListView x:Name="listView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <!--<Image Source="{Binding Imageurl}"></Image>-->
+                                <StackLayout HorizontalOptions="Start">
+                                    <Label Text="{Binding task_name}" FontSize="Large">
+                                    </Label>
+                                    <Label Text="{Binding project_name}" TextColor="Gray">
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="{Binding task_total_hours}"  />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <AbsoluteLayout BackgroundColor="Gray" Padding="0,15,0,2">
+                <Label Text="test"></Label>
+            </AbsoluteLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

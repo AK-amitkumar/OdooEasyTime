@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyTimeOdoo.DrivingPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="plus.png" Text="New" Activated="ToolbarItem_Activated"></ToolbarItem>
+        <ToolbarItem Icon="plus.png" Text="New"></ToolbarItem>
     </ContentPage.ToolbarItems>
     
     <ListView x:Name="listview" HasUnevenRows="True">
