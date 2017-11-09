@@ -8,10 +8,8 @@
     </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2.000*"></RowDefinition>
-            <RowDefinition Height="2.000*"></RowDefinition>
-            <RowDefinition Height="4.500*"></RowDefinition>
-            <RowDefinition Height="1.500*"></RowDefinition>
+            <RowDefinition Height="7.000*"></RowDefinition>
+            <RowDefinition Height="3.000*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -37,18 +35,7 @@
         </ListView.ItemTemplate>
     </ListView>
 
-        <StackLayout Grid.Row="1">
-        <Label Text="lat" x:Name="latTest"></Label>
-        <Label Text="long" x:Name="longTest"></Label>
-        </StackLayout>
-
-        <StackLayout Grid.Row="2" VerticalOptions="StartAndExpand">
-            <maps:Map WidthRequest="320" HeightRequest="200" x:Name="MainMap"></maps:Map>
-            
-        </StackLayout>
-    
-
-            <StackLayout Grid.Row="3" VerticalOptions="End">
+            <StackLayout Grid.Row="1" VerticalOptions="End">
             <AbsoluteLayout BackgroundColor="Gray" Padding="0,15,0,2">
                 <Button x:Name="TimerBtn" BackgroundColor="Green" TextColor="White" Text="Start" BorderWidth="1" Font="18" AbsoluteLayout.LayoutBounds="0.2,0,0.2,0.8" AbsoluteLayout.LayoutFlags="All" Clicked="TimerBtn_Clicked" />
                 <Label x:Name="TimerLbl" Text="00:00:00" FontSize="30" TextColor="White" AbsoluteLayout.LayoutBounds="0.8,0,0.4,0.9" AbsoluteLayout.LayoutFlags="All" />

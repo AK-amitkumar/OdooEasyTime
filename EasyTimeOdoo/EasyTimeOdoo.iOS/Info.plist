@@ -54,11 +54,11 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Can we use your camera</string>
-	<key>NSLocationWhenInUseUsageDescription<key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to Location to track GPS.</string>
-	<key>NSLocationAlwaysUsageDescription<key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app needs access to Location to track GPS.</string>
-	<key>NSLocationUsageDescription<key>
+	<key>NSLocationUsageDescription</key>
 	<string>This app needs access to Location to track GPS.</string>
 </dict>
 </plist>

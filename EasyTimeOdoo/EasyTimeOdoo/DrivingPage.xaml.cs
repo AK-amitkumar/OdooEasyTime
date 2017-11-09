@@ -5,9 +5,8 @@ using EasyTimeOdoo.Modal;
 using EasyTimeOdoo.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Threading.Tasks;
 using Plugin.Geolocator;
-using Xamarin.Forms.Maps;
+using System.Threading.Tasks;
 
 namespace EasyTimeOdoo
 {
@@ -15,11 +14,15 @@ namespace EasyTimeOdoo
     public partial class DrivingPage : ContentPage
     {
         
-        Stopwatch sw;
+        Stopwatch sw;   
+
+        string OriginLongitude;
+        string OriginLatitude;
+        string DestLongtitude;
+        string DestLatitude;
 
         public DrivingPage()
         {
-            
             InitializeComponent();
             listview.ItemsSource = _activeDrive;
             sw = new Stopwatch();
@@ -52,11 +55,12 @@ namespace EasyTimeOdoo
 
         // Timer toggle event
 
-        void TimerBtn_Clicked(object sender, EventArgs e)
+        async void TimerBtn_Clicked(object sender, EventArgs e)
         {
             if (TimerBtn.Text == "Start")
             {
                 sw.Start();
+                await GetfirstPosition();
                 TimerBtn.Text = "Stop";
                 TimerBtn.BackgroundColor = Color.Red;
                 Device.StartTimer(new TimeSpan(0, 0, 1), UpdateLabel);
@@ -64,42 +68,40 @@ namespace EasyTimeOdoo
             else
             {
                 sw.Stop();
+                await GetSecondPosition();
                 TimerBtn.Text = "Start";
                 TimerBtn.BackgroundColor = Color.Green;
                 var elapsed = sw.Elapsed.ToString(@"hh\:mm\:ss");
-                var page = new NewActivityDriveModal(elapsed);
+
+                var page = new NewActivityDriveModal(elapsed, OriginLongitude, OriginLatitude, DestLongtitude, DestLatitude);
                 Navigation.PushModalAsync(page);
                 sw.Reset();
             }
         }
 
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
+        async
+        Task
+GetfirstPosition(){
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 1;
-
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1));
-            MainMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromKilometers(1)));
 
-            latTest.Text = position.Latitude.ToString();
-            longTest.Text = position.Longitude.ToString();
+                OriginLongitude = position.Longitude.ToString();
+                OriginLatitude = position.Latitude.ToString(); 
 
-            locator.PositionChanged += (sender, e) =>
-            {
-                position = e.Position;
-                latTest.Text = position.Latitude.ToString();
-                longTest.Text = position.Latitude.ToString();
-            };
-
-            var pin = new Pin
-            {
-                Position = new Position(position.Latitude, position.Longitude),
-                Label = "label",
-                Address = "address",
-            };
-            MainMap.Pins.Add(pin);
         }
+
+        async
+        Task
+GetSecondPosition(){
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 1;
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1));
+
+            DestLongtitude = position.Longitude.ToString();
+            DestLatitude = position.Longitude.ToString();
+        }
+
 
         bool UpdateLabel()
         {
