@@ -11,24 +11,25 @@ namespace EasyTimeOdoo.Modal
     {
         Activity item;
         ObservableCollection<MaterialLine> materials;
-
-        Dictionary<string, string> barcode = new Dictionary<string, string>();
+        Dictionary<string, string> barcode;
 
         public ActivityModal(Activity item)
         {
             InitializeComponent();
 
+            // Dummy data 
+            barcode = new Dictionary<string, string>();
             barcode.Add("5760466976459", "Mathilde Kakao");
             barcode.Add("5741000133491", "Royal Classic");
+            // Dummy data 
 
-            // dummy data 
+
+
             materials = new ObservableCollection<MaterialLine>();
             materials.Add(new MaterialLine { quantity = 1, product_id = "CannotGetMaterialsAPI" });
 
             materialList.ItemsSource = materials;
             this.item = item;
-
-
 
             Tasklbl.Text = item.task_name;
             Projectlbl.Text = item.project_name;
@@ -52,7 +53,7 @@ namespace EasyTimeOdoo.Modal
         {
             var scannerPage = new ZXingScannerPage();
             // Navigate to our scanner page
-            await Navigation.PushModalAsync(scannerPage);
+            await Navigation.PushAsync(new NavigationPage(scannerPage));
 
             scannerPage.OnScanResult += (result) =>
             {
@@ -73,7 +74,9 @@ namespace EasyTimeOdoo.Modal
         }
 
         void AddMaterialLine(string barcodeNumber){
-            materials.Add(new MaterialLine{quantity=1, product_id=barcodeNumber});
+            string name = barcode[barcodeNumber];
+
+            materials.Add(new MaterialLine{quantity=1, product_id=barcodeNumber, description=name});
             
             
         }

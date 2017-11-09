@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.ActivityModal">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal" Padding="10,40,10,10">
-                <StackLayout>
-                    <Label Text="Opgave: ">
+        <StackLayout Padding="0,20,0,0">
+                    <!--            Material bar-->
+            <StackLayout BackgroundColor="Black" Orientation="Horizontal" Padding="10,10,0,10">
+                <Label Text="Task" FontSize="20" TextColor="White"></Label>
+            </StackLayout>
+            <!--            Task info-->
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Padding="10,0,10,0">
+                    <Label FontAttributes="Bold" Text="Opgave: ">
                     </Label>
-                    <Label Text="Projekt: ">
+                    <Label FontAttributes="Bold" Text="Projekt: ">
                     </Label>
-                    <Label Text="Startdato: ">
+                    <Label FontAttributes="Bold" Text="Startdato: ">
                     </Label>
-                    <Label Text="Slutdato: ">
+                    <Label FontAttributes="Bold" Text="Slutdato: ">
                     </Label>
-                    <Label Text="Estimeret tid: ">
+                    <Label FontAttributes="Bold" Text="Estimeret tid: ">
                     </Label>
-                    <Label Text="Tid brugt: ">
+                    <Label FontAttributes="Bold" Text="Tid brugt: ">
                     </Label>
                     <Button Text="Tilføj billede?" Clicked="AddPictureBtn_clicked">
                     </Button>
@@ -34,30 +39,31 @@
                     </Label>
                 </StackLayout>
             </StackLayout>
-            <StackLayout BackgroundColor="Black" Orientation="Horizontal">
-                <Label Text="Materialer" TextColor="White">
-                </Label>
-                <Button Image="plus.png" Clicked="AddMaterialBtn_clicked">
-                </Button>
+            <!--            Material bar-->
+            <StackLayout BackgroundColor="Black" Orientation="Horizontal" Padding="10,10,0,10" Spacing="80">
+                <Label FontSize="20" Text="Materialer" TextColor="White" />
+                <Label FontSize="20" Text="Antal" TextColor="White" />
+                <Button Image="plus.png" Clicked="AddMaterialBtn_clicked" Margin="0,0,0,10" />
             </StackLayout>
-
-<!--Material list-->
+            <!--            Material list-->
             <ListView x:Name="materialList" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
 <!--                            <ViewCell.ContextActions>
-                                <MenuItem Clicked="Start_clicked" CommandParameter="{Binding .}" Text="Start">
-                                </MenuItem>
+                                <MenuItem Clicked="Start_clicked" CommandParameter="{Binding .}" Text="Start" />
                             </ViewCell.ContextActions>-->
                             <StackLayout Orientation="Horizontal" Padding="5">
-                                <Label Text="{Binding product_id}"></Label>
-                                <Label Text="{Binding quantity}"></Label>
+                                <Label Text="{Binding description}">
+                                </Label>
+                                <Label Text="{Binding quantity}">
+                                </Label>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <!--            Annuller og gem btns-->
             <StackLayout VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Button WidthRequest="100" BorderWidth="1" Text="Annullér" BackgroundColor="Red" TextColor="White" Clicked="AnnullerBtn_clicked">
                 </Button>

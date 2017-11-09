@@ -26,14 +26,12 @@ namespace EasyTimeOdoo
         public ThisWeekPage()
         {
             InitializeComponent();
-
         }
 
         protected override async void OnAppearing()
         {
             getWeekDates();
             Url = Url + "/get/date/tasks?user_id=" + id + "&start="+ startDate +"&end=" + endDate;
-
 
             var content = await _client.GetStringAsync(Url);
             var activities = JsonConvert.DeserializeObject<TaskResponse>(content);
