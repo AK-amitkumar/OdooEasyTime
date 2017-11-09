@@ -14,11 +14,12 @@ namespace EasyTimeOdoo
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DrivingPage : ContentPage
     {
-
+        
         Stopwatch sw;
 
         public DrivingPage()
         {
+            
             InitializeComponent();
             listview.ItemsSource = _activeDrive;
             sw = new Stopwatch();
@@ -76,10 +77,20 @@ namespace EasyTimeOdoo
         {
             base.OnAppearing();
             var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
+            locator.DesiredAccuracy = 1;
 
-            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(2));
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1));
             MainMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromKilometers(1)));
+
+            latTest.Text = position.Latitude.ToString();
+            longTest.Text = position.Longitude.ToString();
+
+            locator.PositionChanged += (sender, e) =>
+            {
+                position = e.Position;
+                latTest.Text = position.Latitude.ToString();
+                longTest.Text = position.Latitude.ToString();
+            };
 
             var pin = new Pin
             {

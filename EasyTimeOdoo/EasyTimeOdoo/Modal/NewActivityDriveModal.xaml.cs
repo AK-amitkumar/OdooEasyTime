@@ -5,11 +5,14 @@ using EasyTimeOdoo.Model;
 using Xamarin.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Xamarin.Forms.Maps;
+using Plugin.Geolocator;
 
 namespace EasyTimeOdoo.Modal
 {
     public partial class NewActivityDriveModal : ContentPage
     {
+        
         ObservableCollection<Activity> _Activity;
         int userID = 7;
         string Url = "https://ucn.odoologin.dk/get/date/tasks?user_id=";
@@ -30,6 +33,7 @@ namespace EasyTimeOdoo.Modal
             _Activity = new ObservableCollection<Activity>(activities.data);
             listView.ItemsSource = _Activity;
             lblTime.Text = elapsed;
+
 
             base.OnAppearing();
         }
