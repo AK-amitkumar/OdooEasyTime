@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
 using UIKit;
+using Xamarin.Forms.Maps;
 
 namespace EasyTimeOdoo.iOS
 {
@@ -13,6 +13,7 @@ namespace EasyTimeOdoo.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+        const string mapsAPIKey = "AIzaSyDpst6HNkFNAyw_bl07FwVRpUOrLVNUIQ4";
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -22,11 +23,10 @@ namespace EasyTimeOdoo.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Xamarin.FormsGoogleMaps.Init(mapsAPIKey);
             global::Xamarin.Forms.Forms.Init();
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             LoadApplication(new App());
-
-
             return base.FinishedLaunching(app, options);
         }
     }

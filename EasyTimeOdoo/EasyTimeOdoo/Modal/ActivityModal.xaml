@@ -9,20 +9,14 @@
             <!--            Task info-->
             <StackLayout Orientation="Horizontal">
                 <StackLayout Padding="10,0,10,0">
-                    <Label FontAttributes="Bold" Text="Opgave: ">
-                    </Label>
-                    <Label FontAttributes="Bold" Text="Projekt: ">
-                    </Label>
-                    <Label FontAttributes="Bold" Text="Startdato: ">
-                    </Label>
-                    <Label FontAttributes="Bold" Text="Slutdato: ">
-                    </Label>
-                    <Label FontAttributes="Bold" Text="Estimeret tid: ">
-                    </Label>
-                    <Label FontAttributes="Bold" Text="Tid brugt: ">
-                    </Label>
-                    <Button Text="Tilføj billede?" Clicked="AddPictureBtn_clicked">
-                    </Button>
+                    <Label FontAttributes="Bold" Text="Opgave: "/>
+                    <Label FontAttributes="Bold" Text="Projekt: "/>
+                    <Label FontAttributes="Bold" Text="Startdato: "/>
+                    <Label FontAttributes="Bold" Text="Slutdato: "/>
+                    <Label FontAttributes="Bold" Text="Estimeret tid: "/>
+                    <Label FontAttributes="Bold" Text="Tid brugt: "/>
+<!--                    <Button Text="Tilføj billede?" Clicked="AddPictureBtn_clicked">
+                    </Button>-->
                 </StackLayout>
                 <StackLayout>
                     <Label x:Name="Tasklbl">
