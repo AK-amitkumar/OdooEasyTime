@@ -60,17 +60,17 @@ namespace EasyTimeOdoo
             if (TimerBtn.Text == "Start")
             {
                 sw.Start();
-                await GetfirstPosition();
                 TimerBtn.Text = "Stop";
                 TimerBtn.BackgroundColor = Color.Red;
                 Device.StartTimer(new TimeSpan(0, 0, 1), UpdateLabel);
+                await GetfirstPosition();
             }
             else
             {
                 sw.Stop();
-                await GetSecondPosition();
                 TimerBtn.Text = "Start";
                 TimerBtn.BackgroundColor = Color.Green;
+                await GetSecondPosition();
                 var elapsed = sw.Elapsed.ToString(@"hh\:mm\:ss");
 
                 var page = new NewActivityDriveModal(elapsed, OriginLongitude, OriginLatitude, DestLongtitude, DestLatitude);

@@ -31,11 +31,12 @@ namespace EasyTimeOdoo.Modal
             InitializeComponent();
         }
 
-        async void task_clicked(object sender, System.EventArgs e)
+
+        async void Handle_Tapped(object sender, System.EventArgs e)
         {
-            Activity item = (Activity)sender;
-            //Activity item2 = (Activity)item2.BindingContext;
-            string url = "https://ucn.odoologin.dk/timesheet/add?task_id=" + item.task_id + "&user_id=" + userID + "&timesheet_date=" + DateTime.Now.ToString("dd-MM-yyyy") + "&timesheet_description=" + "hej" + "&timesheet_duration=" + elapsed;
+            ViewCell item = (ViewCell)sender;
+            Activity item2 = (Activity)item.BindingContext;
+            string url = "https://ucn.odoologin.dk/timesheet/add?task_id=" + item2.task_id + "&user_id=" + userID + "&timesheet_date=" + DateTime.Now.ToString("dd-MM-yyyy") + "&timesheet_description=" + "hej" + "&timesheet_duration=" + elapsed;
             await _client.PostAsync(url, null);
 
             await Navigation.PopModalAsync();
@@ -73,7 +74,7 @@ namespace EasyTimeOdoo.Modal
 
                 case "Thu":
                     startDate = DateTime.Now.AddDays(-3).ToString("dd-MM-yyyy");
-                    endDate = DateTime.Now.AddDays(+3).ToString("dd/MM/yyyy");
+                    endDate = DateTime.Now.AddDays(+3).ToString("dd-MM-yyyy");
                     return;
 
                 case "Fri":
@@ -91,6 +92,11 @@ namespace EasyTimeOdoo.Modal
                     endDate = DateTime.Now.ToString("dd-MM-yyyy");
                     return;
             }
+        }
+
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

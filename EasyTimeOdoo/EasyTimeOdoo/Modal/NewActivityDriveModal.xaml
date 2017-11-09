@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyTimeOdoo.Modal.NewActivityDriveModal">
 
-    <Grid>
+<!--    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="8.000*"></RowDefinition>
             <RowDefinition Height="2.000*"></RowDefinition>
@@ -12,10 +12,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <StackLayout Grid.Row="0" BackgroundColor="Red" Grid.ColumnSpan="2">
-            <ListView x:Name="listView">
+        </Grid.ColumnDefinitions>-->
+        <StackLayout Padding="0,20,0,0">
+        <StackLayout BackgroundColor="Red">
+            <ListView x:Name="listView" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -27,20 +27,26 @@
                                     <Label Text="{Binding project_name}" TextColor="Gray">
                                     </Label>
                                 </StackLayout>
-                                <StackLayout>
-                                    <Label Text="{Binding task_total_hours}"  />
-                                </StackLayout>
-
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
+
+    <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" >
+            <Label FontSize="Large" Text="Tid" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+            <Label FontSize="Large" x:Name="lblTime" Text="tid" HorizontalTextAlignment="Center"></Label>
+            <Label FontSize="Large" Text="Distance" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+            <Label FontSize="Large" x:Name="lblDistance" HorizontalTextAlignment="Center"></Label>
+            <Button Text="Annuller" Clicked="Handle_Clicked" Margin="20"></Button>
+
         
+    </StackLayout>
+        </StackLayout>
         
 
-        <StackLayout Padding="25" Grid.Row="1" Grid.Column="0" BackgroundColor="Green">
+<!--        <StackLayout Padding="25" Grid.Row="1" Grid.Column="0" BackgroundColor="Green">
             <Label FontSize="Large" Text="tid"></Label>
             <Label FontSize="Large" Text="distance"></Label>
         </StackLayout>
@@ -49,6 +55,6 @@
             <Label FontSize="Large" Text="distance" x:Name="lblDistance"></Label>
         </StackLayout>
 
-    </Grid>
+    </Grid>-->
 
 </ContentPage>

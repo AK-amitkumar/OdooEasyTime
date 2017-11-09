@@ -57,5 +57,10 @@ namespace EasyTimeOdoo.Modal
 
             base.OnAppearing();
         }
+
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
     }
 }
