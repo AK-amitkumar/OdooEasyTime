@@ -99,7 +99,7 @@ GetSecondPosition(){
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1));
 
             DestLongtitude = position.Longitude.ToString();
-            DestLatitude = position.Longitude.ToString();
+            DestLatitude = position.Latitude.ToString();
         }
 
 
