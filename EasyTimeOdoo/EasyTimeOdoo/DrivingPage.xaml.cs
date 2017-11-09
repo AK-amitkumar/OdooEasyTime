@@ -6,6 +6,8 @@ using EasyTimeOdoo.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
+using Plugin.Geolocator;
+using Xamarin.Forms.Maps;
 
 namespace EasyTimeOdoo
 {
@@ -70,11 +72,23 @@ namespace EasyTimeOdoo
             }
         }
 
-        //async void openModal()
-        //{
-        //    var NewActivityDriveModal = new NewActivityDriveModal();
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
 
-        //}
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(2));
+            MainMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromKilometers(1)));
+
+            var pin = new Pin
+            {
+                Position = new Position(position.Latitude, position.Longitude),
+                Label = "label",
+                Address = "address",
+            };
+            MainMap.Pins.Add(pin);
+        }
 
         bool UpdateLabel()
         {
