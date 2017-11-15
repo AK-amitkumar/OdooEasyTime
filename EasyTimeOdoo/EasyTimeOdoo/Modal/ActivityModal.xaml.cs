@@ -23,10 +23,8 @@ namespace EasyTimeOdoo.Modal
             barcode.Add("5741000133491", "Royal Classic");
             // Dummy data 
 
-
-
             materials = new ObservableCollection<MaterialLine>();
-            materials.Add(new MaterialLine { quantity = 1, product_id = "CannotGetMaterialsAPI" });
+            materials.Add(new MaterialLine { quantity = 1, description = "CannotGetMaterialsAPI" });
 
             materialList.ItemsSource = materials;
             this.item = item;
@@ -34,8 +32,7 @@ namespace EasyTimeOdoo.Modal
             Tasklbl.Text = item.task_name;
             Projectlbl.Text = item.project_name;
             Startlbl.Text = item.task_start_date;
-            Endlbl.Text = item.task_end_date;
-            //Timelbl.Text = // 
+            //Endlbl.Text = item.task_end_date;
             Elapsedlbl.Text = item.task_total_hours.ToString();
         }
 
@@ -52,8 +49,7 @@ namespace EasyTimeOdoo.Modal
         async void AddMaterialBtn_clicked(object sender, System.EventArgs e)
         {
             var scannerPage = new ZXingScannerPage();
-            // Navigate to our scanner page
-            await Navigation.PushAsync(new NavigationPage(scannerPage));
+            await Navigation.PushModalAsync(scannerPage);
 
             scannerPage.OnScanResult += (result) =>
             {
@@ -68,17 +64,18 @@ namespace EasyTimeOdoo.Modal
             };
         }
 
-        void AddPictureBtn_clicked(object sender, System.EventArgs e)
-        {
-            // add picture logic 
-        }
-
         void AddMaterialLine(string barcodeNumber){
             string name = barcode[barcodeNumber];
 
             materials.Add(new MaterialLine{quantity=1, product_id=barcodeNumber, description=name});
-            
-            
         }
+
+        void Start_clicked(object sender, System.EventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+
+            materials.Remove((MaterialLine)item.BindingContext);
+        }
+
     }
 }

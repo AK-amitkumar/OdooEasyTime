@@ -2,67 +2,79 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.ActivityModal">
     <ContentPage.Content>
         <StackLayout Padding="0,20,0,0">
-                    <!--            Material bar-->
-            <StackLayout BackgroundColor="Black" Orientation="Horizontal" Padding="10,10,0,10">
-                <Label Text="Task" FontSize="20" TextColor="White"></Label>
+            
+            <!--Material bar-->
+            <StackLayout BackgroundColor="Gray" Orientation="Horizontal" Padding="10,10,10,10" Margin="0,10,0,0">
+                <Label Text="Opgave" FontSize="Large" TextColor="White">
+                </Label>
             </StackLayout>
-            <!--            Task info-->
-            <StackLayout Orientation="Horizontal">
-                <StackLayout Padding="10,0,10,0">
-                    <Label FontAttributes="Bold" Text="Opgave: "/>
-                    <Label FontAttributes="Bold" Text="Projekt: "/>
-                    <Label FontAttributes="Bold" Text="Startdato: "/>
-                    <Label FontAttributes="Bold" Text="Slutdato: "/>
-                    <Label FontAttributes="Bold" Text="Estimeret tid: "/>
-                    <Label FontAttributes="Bold" Text="Tid brugt: "/>
-<!--                    <Button Text="Tilføj billede?" Clicked="AddPictureBtn_clicked">
-                    </Button>-->
-                </StackLayout>
+            
+            <!--Task info-->
+            <StackLayout Padding="10">
+                <Label FontAttributes="Bold" Text="Projekt: " />
+                <Label x:Name="Projectlbl" />
+            </StackLayout>
+            
+            <StackLayout Padding="10">
+                <Label FontAttributes="Bold" Text="Opgave: " />
+                <Label x:Name="Tasklbl" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Padding="10" Spacing="20">
                 <StackLayout>
-                    <Label x:Name="Tasklbl">
-                    </Label>
-                    <Label x:Name="Projectlbl">
-                    </Label>
-                    <Label x:Name="Startlbl">
-                    </Label>
-                    <Label x:Name="Endlbl">
-                    </Label>
-                    <Label x:Name="Timelbl">
-                    </Label>
-                    <Label x:Name="Elapsedlbl">
-                    </Label>
+                    <Label FontAttributes="Bold" Text="Startdato: " />
+                    <Label x:Name="Startlbl" />
+                </StackLayout>
+<!--                <StackLayout>
+                    <Label FontAttributes="Bold" Text="Slutdato: " />
+                    <Label x:Name="Endlbl" />
+                </StackLayout>-->
+                <StackLayout>
+                    <Label FontAttributes="Bold" Text="Tid brugt: " />
+                    <Label x:Name="Elapsedlbl" />
                 </StackLayout>
             </StackLayout>
-            <!--            Material bar-->
-            <StackLayout BackgroundColor="Black" Orientation="Horizontal" Padding="10,10,0,10" Spacing="80">
-                <Label FontSize="20" Text="Materialer" TextColor="White" />
-                <Label FontSize="20" Text="Antal" TextColor="White" />
-                <Button Image="plus.png" Clicked="AddMaterialBtn_clicked" Margin="0,0,0,10" />
+            
+            <!--Material bar-->
+            <StackLayout BackgroundColor="Gray" Orientation="Horizontal" Spacing="150">
+                <StackLayout HorizontalOptions="Start" Padding="10,10,10,10">
+                    <Label FontSize="Large" Text="Materialer" TextColor="White" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="40">
+                    <Button Image="barcode.png" Clicked="AddMaterialBtn_clicked" HorizontalOptions="End" />
+                    <Button Image="plus2.png" />
+                </StackLayout>
             </StackLayout>
-            <!--            Material list-->
+            
+            <!--Material list-->
             <ListView x:Name="materialList" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-<!--                            <ViewCell.ContextActions>
-                                <MenuItem Clicked="Start_clicked" CommandParameter="{Binding .}" Text="Start" />
-                            </ViewCell.ContextActions>-->
-                            <StackLayout Orientation="Horizontal" Padding="5">
-                                <Label Text="{Binding description}">
-                                </Label>
-                                <Label Text="{Binding quantity}">
-                                </Label>
+                            
+                        <!--Swipe gesture-->
+                        <ViewCell.ContextActions>
+                                <MenuItem Clicked="Start_clicked" CommandParameter="{Binding .}" Text="Delete" IsDestructive="true" ></MenuItem>
+                        </ViewCell.ContextActions>
+                            
+                            <StackLayout Orientation="Horizontal" Padding="20,10,20,10">
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding description}" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding quantity}" HorizontalTextAlignment="End" HorizontalOptions="End" />
+                                    <Label Text="stk">
+                                    </Label>
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <!--            Annuller og gem btns-->
-            <StackLayout VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button WidthRequest="100" BorderWidth="1" Text="Annullér" BackgroundColor="Red" TextColor="White" Clicked="AnnullerBtn_clicked">
-                </Button>
-                <Button WidthRequest="100" BorderWidth="1" Text="Gem" BackgroundColor="Green" TextColor="White" Clicked="GemBtm_clicked">
-                </Button>
+            <!--Annuller og gem btns-->
+            <StackLayout VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="40" Padding="0,20,0,20">
+                <Button Text="Annullér" Clicked="AnnullerBtn_clicked" />
+                <Button Text="Gem" Clicked="GemBtm_clicked" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

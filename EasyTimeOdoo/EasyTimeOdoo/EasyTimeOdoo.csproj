@@ -71,6 +71,7 @@
       <DependentUpon>MaterialModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\MaterialLine.cs" />
+    <Compile Include="Model\MapResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">

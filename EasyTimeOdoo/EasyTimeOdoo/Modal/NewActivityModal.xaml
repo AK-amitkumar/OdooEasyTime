@@ -1,30 +1,21 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EasyTimeOdoo.Modal.NewActivityModal">
-    
-    <ListView x:Name="taskList">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{Binding task_name}"></Label>
-                        <Label Text="{Binding task_total_hours}"></Label>
-                        <Button Text="Opdater" Clicked="task_clicked"></Button>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-
-        </ListView.ItemTemplate>                   
-
-    </ListView>
-
-
-    <!--  <ContentPage.Content>
-        <StackLayout>
-            <Entry Placeholder="Enter name for new person..." x:Name="nameEntry"></Entry>
-            <Entry Placeholder="Enter status for new person..." x:Name="statusEntry"></Entry>
-            <Button Text="Create person" Clicked="Button_Clicked"></Button>
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EasyTimeOdoo.Modal.NewActivityModal">
+<StackLayout Padding="10,30,10,10" >
+                <ListView x:Name="taskList" HasUnevenRows="true" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Tapped="Handle_Tapped">
+                        <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="Center">
+                            <Label Text="{Binding task_name}" FontSize="Large"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout VerticalOptions="End">
+            <Button Text="Annuller" Clicked="Handle_Clicked"></Button>
         </StackLayout>
-    </ContentPage.Content>   -->
+    </StackLayout>
+
+
 </ContentPage>

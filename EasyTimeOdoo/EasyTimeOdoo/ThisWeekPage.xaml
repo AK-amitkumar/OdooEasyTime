@@ -6,18 +6,26 @@
         <ListView x:Name="listView" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell Tapped="ViewCell_Tapped">
+
+                        <!--Swipe gesture-->
+                        <ViewCell.ContextActions>
+                                <MenuItem Clicked="Start_clicked" CommandParameter="{Binding .}" Text="Start" ></MenuItem>
+                        </ViewCell.ContextActions>
+
+                        
                         <StackLayout Orientation="Horizontal" Padding="5">
                             <!--<Image Source="{Binding Imageurl}"></Image>-->
                             <StackLayout HorizontalOptions="StartAndExpand">
                                 <Label Text="{Binding task_name}" FontSize="Large"></Label>
                                 <Label Text="{Binding project_name}" TextColor="Gray"></Label>
                             </StackLayout>
-                            <StackLayout>
+                            <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding task_total_hours}"/>
+                                <Label Text="Timer"></Label>
                             </StackLayout>
-                            <Stepper x:Name="stepper" Increment="5" Minimum="0" Maximum="1000"></Stepper>
-                            <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"></Label>
+<!--                            <Stepper x:Name="stepper" Increment="5" Minimum="0" Maximum="1000"></Stepper>-->
+<!--                            <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"></Label>-->
                             <!-- <Button Text="test" Clicked="Button_Clicked"></Button> -->
                         </StackLayout>
                     </ViewCell>
@@ -25,26 +33,13 @@
             </ListView.ItemTemplate>
         </ListView>
 
-<!--        <StackLayout VerticalOptions="End">
-
+        <!--Timer-->
+        <StackLayout VerticalOptions="End">
             <AbsoluteLayout BackgroundColor="Gray" Padding="0,15,0,2">
-                <Button x:Name="TimerBtn" 
-                    BackgroundColor="Green" 
-                    TextColor="White" 
-                    Text="Start" 
-                    BorderWidth="1" 
-                    Font="18"
-                    AbsoluteLayout.LayoutBounds="0.2,0,0.2,0.8" 
-                    AbsoluteLayout.LayoutFlags="All" 
-                    Clicked="TimerBtn_Clicked"/>
-                <Label x:Name="TimerLbl" 
-                   Text="00:00:00" 
-                   FontSize="30"
-                   TextColor="White"
-                   AbsoluteLayout.LayoutBounds="0.8,0,0.4,0.9" 
-                   AbsoluteLayout.LayoutFlags="All"/>
+                <Button x:Name="TimerBtn" BackgroundColor="Green" TextColor="White" Text="Start" BorderWidth="1" Font="18" AbsoluteLayout.LayoutBounds="0.2,0,0.2,0.8" AbsoluteLayout.LayoutFlags="All" Clicked="TimerBtn_Clicked" />
+                <Label x:Name="TimerLbl" Text="00:00:00" FontSize="30" TextColor="White" AbsoluteLayout.LayoutBounds="0.8,0,0.4,0.9" AbsoluteLayout.LayoutFlags="All" />
             </AbsoluteLayout>
-        </StackLayout>-->
+        </StackLayout>
 
 
     </StackLayout>
